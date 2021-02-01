@@ -106,10 +106,11 @@
 
 (define compute-image-format
   (lambda (image)
+    (define width (image-width image))
     (cond
-      ((> (image-width image) (image-height image)) "quer")
-      ((< (image-width image) (image-height image)) "hochkant")
-      #;((= (image-width image) (image-height image)) "quadratisch")
+      ((> width (image-height image)) "quer")
+      ((< width (image-height image)) "hochkant")
+      #;((= width (image-height image)) "quadratisch")
       (else "quadratisch")
 
       )))
