@@ -36,6 +36,27 @@
 (define list-sum
   (lambda (list)
     (cond
-      ((empty? list) 0)
+      ((empty? list) 0) ; neutrales Element bezüglich +
       ((cons? list) (+ (first list)
                        (list-sum (rest list)))))))
+
+(define list-product
+  (lambda (list)
+    (cond
+      ((empty? list) 1) ; neutrales Element bezüglich *
+      ((cons? list) (* (first list)
+                       (list-product (rest list)))))))
+
+; Alle geraden Elemente einer Liste extrahieren
+(: extract-evens (list-of-numbers -> list-of-numbers))
+
+(check-expect (extract-evens (cons 1 (cons 4 (cons 7 (cons 10 (cons 12 empty))))))
+              (cons 4 (cons 10 (cons 12 empty))))
+
+(define extract-evens
+  (lambda (list)
+    (cond
+      ((empty? list) list)
+      ((cons? list) (if (even? (first list))
+                        (cons (first list) (extract-evens (rest list)))
+                        (extract-evens (rest list)))))))
