@@ -5,6 +5,7 @@
 ; - Quadrat
 ; - Kreis
 ; - einer Überlagerung zweier geometrischer Figuren
+;                             ^^^^^^^^^^^^^^^^^^^^^ Selbstbezug
 (define shape
   (signature (mixed square circle overlay)))
 
@@ -41,7 +42,7 @@
 
 ; Eine Überlagerung besteht aus:
 ; - Figur
-; - noch 'ne Figure
+; - noch 'ne Figur
 (define-record overlay
   make-overlay
   overlay?
