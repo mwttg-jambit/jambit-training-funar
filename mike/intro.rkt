@@ -87,6 +87,31 @@
 ; (: image-width (image -> natural))
 ; (: image-height (image -> natural))
 
+; Ein Bildformat ist eins der folgenden:
+; - hochkant
+; - quer
+; - quadratisch
+(define image-format
+  (signature (enum "hochkant" "quer" "quadratisch")))
+
+; Format eines Bildes ausrechnen
+(: compute-image-format (image -> image-format))
+
+(check-expect (compute-image-format (rectangle 100 50 "solid" "blue"))
+              "quer")
+(check-expect (compute-image-format (rectangle 10 50 "solid" "blue"))
+              "hochkant")
+(check-expect (compute-image-format (rectangle 10 10 "solid" "blue"))
+              "quadratisch")
+
+(define compute-image-format
+  (lambda (image)
+    (cond
+      ((> (image-width image) (image-height image)) "quer")
+      ((< (image-width image) (image-height image)) "hochkant")
+      ((= (image-width image) (image-height image)) "quadratisch"))))
+     
+
 #|
 class C {
   int m(int x) {
