@@ -21,6 +21,12 @@
  (beside star1 square1)
  (beside square1 star1))
 
+; Konstruktionsanleitungen / design recipes
+; Kurzbeschreibung
+; quadratisches Kachelmuster aus zwei Bildern zusammensetzen
+; Signaturdeklaration
+(: tile (image image -> image))
+
 (define tile
   (lambda (image1 image2) ; Parameter für eine Funktion
     (above
