@@ -151,9 +151,15 @@
 
 ; Tiere auf dem texanischen Highway
 
+; Ein Tier ist eins der folgenden:
+; - Gürteltier
+; - Papagei
+; Fallunterscheidung
+
 ; Ein Gürteltier hat folgende Eigenschaften:
 ; - tot oder lebendig
 ; - Gewicht
+; Repräsentation des Zustands des Gürteltiers zu einem Zeitpunkt
 (define-record dillo
   make-dillo ; Name reine Konvention
   (dillo-liveness liveness)
@@ -173,6 +179,41 @@
 (define dillo2 (make-dillo "dead" 8)) ; totes Gürteltier, 8kg
 
 ; Gürteltier überfahren
+(: run-over-dillo (dillo -> dillo))
+
+(check-expect (run-over-dillo dillo1)
+              (make-dillo "dead" 10))
+(check-expect (run-over-dillo dillo2)
+              (make-dillo "dead" 8))
+
+(define run-over-dillo
+  (lambda (dillo)
+    (make-dillo "dead" (dillo-weight dillo))))
+
+; Eine Schlange hat folgende Eigenschaften:
+; - Länge
+; - Dicke
+(define-record snake
+  make-snake
+  (snake-length number)
+  (snake-thickness number))
+
+(define snake1 (make-snake 200 10)) ; Schlange, 2m lang, 10cm dick
+(define snake2 (make-snake 800 30)) ; Anaconda
+
+; Schlange überfahren
+(: run-over-snake (snake -> snake))
+
+(check-expect (run-over-snake snake1)
+              (make-snake 200 0))
+(check-expect (run-over-snake snake2)
+              (make-snake 800 0))
+
+(define run-over-snake
+  (lambda (snake)
+    (make-snake (snake-length snake) 0)))
+                        
+
 #|
 class Dillo {
   Liveness liveness;
