@@ -109,8 +109,29 @@
     (cond
       ((> (image-width image) (image-height image)) "quer")
       ((< (image-width image) (image-height image)) "hochkant")
-      ((= (image-width image) (image-height image)) "quadratisch"))))
-     
+      #;((= (image-width image) (image-height image)) "quadratisch")
+      (else "quadratisch")
+
+      )))
+
+; Datendefinition
+; Eine Uhrzeit besteht aus: / hat folgende Eigenschaften:
+; - Stunde UND
+; - Minute
+; zusammengesetzte Daten
+(define-record time ; Record-Signatur
+  make-time ; Konstruktor
+  (time-hour natural) ; Selektor
+  (time-minute natural)) ; Selektor
+
+(: make-time (natural natural -> time))
+(: time-hour (time -> natural))
+(: time-minute (time -> natural))
+
+(define time1 (make-time 12 24)) ; 12 Uhr 24
+(define time2 (make-time 16 12)) ; 16 Uhr 12
+
+
 
 #|
 class C {
