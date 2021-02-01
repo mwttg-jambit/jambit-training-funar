@@ -137,6 +137,17 @@
 (check-expect (msm time1)
               (+ (* 12 60) 24))
 
+; Schablone für zusammengesetzte Daten
+#;(define msm
+  (lambda (time)
+    ... (time-hour time) ...
+    ... (time-minute time) ...))
+
+(define msm
+  (lambda (time)
+    (+ (* 60 (time-hour time))
+       (time-minute time))))
+
 
 
 #|
