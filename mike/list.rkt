@@ -60,3 +60,11 @@
       ((cons? list) (if (even? (first list))
                         (cons (first list) (extract-evens (rest list)))
                         (extract-evens (rest list)))))))
+
+(define extract-positives
+  (lambda (list)
+    (cond
+      ((empty? list) list)
+      ((cons? list) (if (positive? (first list))
+                        (cons (first list) (extract-evens (rest list)))
+                        (extract-positives (rest list)))))))
