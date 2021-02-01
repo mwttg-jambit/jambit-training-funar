@@ -11,6 +11,7 @@
 
 (: star1 image)
 (define star1 (star 50 "solid" "blue"))
+(: square1 number)
 (define square1 (square 100 "solid" "gold"))
 (define circle1 (circle 50 "solid" "red"))
 
