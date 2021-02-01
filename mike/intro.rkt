@@ -167,12 +167,14 @@
 ; Repräsentation des Zustands des Gürteltiers zu einem Zeitpunkt
 (define-record dillo
   make-dillo ; Name reine Konvention
+  dillo?
   (dillo-liveness liveness)
   (dillo-weight number))
 
 (: make-dillo (liveness number -> dillo))
 (: dillo-liveness (dillo -> liveness))
 (: dillo-weight (dillo -> number))
+(: dillo? (any -> boolean))
 
 ; Die "Lebendigkeit" ist eins der folgenden:
 ; - tot
@@ -200,6 +202,7 @@
 ; - Dicke
 (define-record snake
   make-snake
+  snake?
   (snake-length number)
   (snake-thickness number))
 
@@ -229,8 +232,8 @@
 (define run-over-animal
   (lambda (animal)
     (cond
-      (... ...)
-      (... ...))))
+      ((dillo? animal) (run-over-dillo animal))
+      ((snake? animal) (run-over-snake animal)))))
 
 #|
 class Dillo {
