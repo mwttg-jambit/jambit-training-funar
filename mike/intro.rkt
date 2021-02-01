@@ -197,6 +197,24 @@
   (lambda (dillo)
     (make-dillo "dead" (dillo-weight dillo))))
 
+; Gürteltier füttern
+(: feed-dillo (dillo number -> dillo))
+
+(check-expect (feed-dillo dillo1 3)
+              (make-dillo "alive" 13))
+(check-expect (feed-dillo dillo2 5)
+              dillo2)
+
+(define feed-dillo
+  (lambda (dillo amount)
+    (match (dillo-liveness dillo)
+      ("alive" (make-dillo "alive" (+ (dillo-weight dillo) amount)))
+      ("dead" dillo))))
+                                                                     
+        
+                 
+
+
 ; Eine Schlange hat folgende Eigenschaften:
 ; - Länge
 ; - Dicke
@@ -220,7 +238,19 @@
 (define run-over-snake
   (lambda (snake)
     (make-snake (snake-length snake) 0)))
-                        
+
+; Schlange überfahren
+(: feed-snake (snake number -> snake))
+
+(check-expect (feed-snake snake1 5)
+              (make-snake 200 10.5))
+
+(define feed-snake
+  (lambda (snake amount)
+    (make-snake (snake-length snake)
+                (+ (snake-thickness snake) (* 0.1 amount)))))
+
+
 ; Tier überfahren
 (: run-over-animal (animal -> animal))
 
@@ -234,6 +264,21 @@
     (cond
       ((dillo? animal) (run-over-dillo animal))
       ((snake? animal) (run-over-snake animal)))))
+
+; Tier füttern
+(: feed-animal (animal number -> animal))
+
+(check-expect (feed-animal dillo1 5)
+              (feed-dillo dillo1 5))
+(check-expect (feed-animal snake1 5)
+              (feed-snake snake1 5))
+
+(define feed-animal
+  (lambda (animal amount)
+    (cond
+      ((dillo? animal) (feed-dillo animal amount))
+      ((snake? animal) (feed-snake snake amount)))))
+                      
 
 #|
 class Dillo {
