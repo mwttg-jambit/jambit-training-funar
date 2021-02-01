@@ -149,6 +149,27 @@
     (+ (* 60 (time-hour time))
        (time-minute time))))
 
+; Tiere auf dem texanischen Highway
+
+; Ein Gürteltier hat folgende Eigenschaften:
+; - tot oder lebendig
+; - Gewicht
+(define-record dillo
+  make-dillo ; Name reine Konvention
+  (dillo-liveness liveness)
+  (dillo-weight number))
+
+(: make-dillo (liveness number -> dillo))
+(: dillo-liveness (dillo -> liveness))
+(: dillo-weight (dillo -> number))
+
+; Die "Lebendigkeit" ist eins der folgenden:
+; - tot
+; - lebendig
+(define liveness
+  (signature (enum "dead" "alive")))
+
+
 
 
 #|
