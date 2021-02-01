@@ -2,3 +2,10 @@
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
 #reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname intro) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
 ; Hier: Editor, unten: REPL
+(define x (+ 12 42))
+(define y
+  (+ 12
+     (* 13 56)
+     (+ 17
+        (* 56 12))))
+
