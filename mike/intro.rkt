@@ -21,8 +21,11 @@
  (beside star1 square1)
  (beside square1 star1))
 
-(above
- (beside image1 image2)
- (beside image2 image1))
+(define tile
+  (lambda (image1 image2) ; Parameter für eine Funktion
+    (above
+     (beside image1 image2)
+     (beside image2 image1))))
+
 
 
