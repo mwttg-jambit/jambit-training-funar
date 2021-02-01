@@ -153,8 +153,13 @@
 
 ; Ein Tier ist eins der folgenden:
 ; - Gürteltier
-; - Papagei
+; - Schlange
 ; Fallunterscheidung
+; jeder Fall eigene zusammengesetzte Datendefinition:
+; gemischte Daten
+(define animal
+  (signature
+   (mixed dillo snake)))
 
 ; Ein Gürteltier hat folgende Eigenschaften:
 ; - tot oder lebendig
