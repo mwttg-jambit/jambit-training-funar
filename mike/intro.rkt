@@ -11,7 +11,7 @@
 
 (: star1 image)
 (define star1 (star 50 "solid" "blue"))
-(: square1 number)
+(: square1 image)
 (define square1 (square 100 "solid" "gold"))
 (define circle1 (circle 50 "solid" "red"))
 
@@ -29,11 +29,19 @@
 ; Signaturdeklaration
 (: tile (image image -> image))
 
+; Testfall
+(check-expect (tile square1 star1)
+              (above
+               (beside square1 star1)
+               (beside star1 square1)))
+
 (define tile
   (lambda (image1 image2) ; Parameter für eine Funktion
     (above
      (beside image1 image2)
      (beside image2 image1))))
+
+(tile square1 star1)
 
 ;(tile star1 circle1)
 
