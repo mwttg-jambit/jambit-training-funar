@@ -16,3 +16,13 @@
 (above
  (beside square1 circle1)
  (beside circle1 square1))
+
+(above
+ (beside star1 square1)
+ (beside square1 star1))
+
+(above
+ (beside image1 image2)
+ (beside image2 image1))
+
+
