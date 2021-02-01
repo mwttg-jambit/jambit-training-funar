@@ -9,6 +9,7 @@
      (+ 17
         (* 56 12))))
 
+(: star1 image)
 (define star1 (star 50 "solid" "blue"))
 (define square1 (square 100 "solid" "gold"))
 (define circle1 (circle 50 "solid" "red"))
