@@ -22,3 +22,8 @@
   cons?
   (first number)
   (rest list-of-numbers))
+
+(define list1 (cons 7 empty)) ; 1elementige Liste: 7
+(define list2 (cons 3 (cons 7 empty))) ; 2elementige Liste: 3 7
+(define list3 (cons 12 (cons 3 (cons 7 empty)))) ; 3elemtige Liste: 12 3 7
+
