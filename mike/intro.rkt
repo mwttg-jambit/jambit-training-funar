@@ -169,6 +169,8 @@
 (define liveness
   (signature (enum "dead" "alive")))
 
+(define dillo1 (make-dillo "alive" 10)) ; lebendiges Gürteltier, wiegt 10kg
+(define dillo2 (make-dillo "dead" 8)) ; totes Gürteltier, 8kg
 
 
 
