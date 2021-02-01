@@ -131,6 +131,9 @@
 (define time1 (make-time 12 24)) ; 12 Uhr 24
 (define time2 (make-time 16 12)) ; 16 Uhr 12
 
+; Minuten seit Mitternacht berechnen
+(: msm (time -> natural))
+
 
 
 #|
