@@ -277,7 +277,7 @@
   (lambda (animal amount)
     (cond
       ((dillo? animal) (feed-dillo animal amount))
-      ((snake? animal) (feed-snake snake amount)))))
+      ((snake? animal) (feed-snake animal amount)))))
                       
 
 #|
