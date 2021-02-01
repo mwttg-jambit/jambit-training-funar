@@ -84,6 +84,8 @@
       ((string=? pet "snake") #f)
       )))
 
+; (: image-width (image -> natural))
+; (: image-height (image -> natural))
 
 #|
 class C {
