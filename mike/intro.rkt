@@ -134,6 +134,9 @@
 ; Minuten seit Mitternacht berechnen
 (: msm (time -> natural))
 
+(check-expect (msm time1)
+              (+ (* 12 60) 24))
+
 
 
 #|
