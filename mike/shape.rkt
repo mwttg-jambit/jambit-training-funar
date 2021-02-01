@@ -46,7 +46,7 @@
 (define-record overlay
   make-overlay
   overlay?
-  (overlay-shape-1 shape)
+  (overlay-shape-1 shape) ; Selbstbezug
   (overlay-shape-2 shape))
 
 (define overlay1 (make-overlay square1 circle1))
@@ -100,8 +100,9 @@
     (cond
       ((square? shape) (in-square? point shape))
       ((circle? shape) (in-circle? point shape))
-      ((overlay? shape) (overlay-shape-1 shape)
-                        (overlay-shape-2 shape)
+      ;; bei Selbstbezug *immer* rekursiver Aufruf!
+      ((overlay? shape) (or (in-shape? point (overlay-shape-1 shape))
+                            (in-shape? point (overlay-shape-2 shape)))
                         ))))
              
 
