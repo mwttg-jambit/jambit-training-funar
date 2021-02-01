@@ -25,5 +25,17 @@
 
 (define list1 (cons 7 empty)) ; 1elementige Liste: 7
 (define list2 (cons 3 (cons 7 empty))) ; 2elementige Liste: 3 7
-(define list3 (cons 12 (cons 3 (cons 7 empty)))) ; 3elemtige Liste: 12 3 7
+(define list3 (cons 12 (cons 3 (cons 7 empty)))) ; 3elementige Liste: 12 3 7
+(define list4 (cons 5 list3)) ; 4elementige Liste: 5 12 3 7
 
+; Elemente einer Liste aufsummieren
+(: list-sum (list-of-numbers -> number))
+
+(check-expect (list-sum list4) 27)
+
+(define list-sum
+  (lambda (list)
+    (cond
+      ((empty? list) 0)
+      ((cons? list) (+ (first list)
+                       (list-sum (rest list)))))))
