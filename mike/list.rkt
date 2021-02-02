@@ -98,10 +98,18 @@
 (define extract-evens
   (lambda (list)
     (cond
-      ((empty? list) list)
+      ((empty? list) empty)
       ((cons? list) (if (even? (first list))
                         (cons (first list) (extract-evens (rest list)))
                         (extract-evens (rest list)))))))
+(define extract-evens2
+  (lambda (list0)
+    (list-fold empty
+               (lambda (first-list rec-result)
+                 (if (even? first-list)
+                     (cons first-list rec-result)
+                     rec-result))
+               list0)))
 
 #;(define extract-positives
   (lambda (list)
