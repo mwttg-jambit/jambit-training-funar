@@ -68,3 +68,6 @@
       ((cons? list) (if (positive? (first list))
                         (cons (first list) (extract-evens (rest list)))
                         (extract-positives (rest list)))))))
+
+; 2 Listen aneinanderhängen
+(: concat (list-of-numbers list-of-numbers -> list-of-numbers))
