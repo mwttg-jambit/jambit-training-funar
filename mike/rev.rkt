@@ -4,7 +4,7 @@
 ; Liste umdrehen
 (: rev ((list-of %a) -> (list-of %a)))
 
-(check-expect (rev (list 1 2 3))
+#;(check-expect (rev (list 1 2 3))
               (list 3 2 1))
 
 (define rev
@@ -26,9 +26,15 @@
       ((cons? list1) (cons (first list1)
                            (concat (rest list1) list2))))))
 
+(define rev-2
+  (lambda (list0)
+    (rev* list0 empty)))
+
 (define rev*
   (lambda (list res) ; Zwischenergebnis: bisher gesehene Listenelemente, umgedreht
     (cond
       ((empty? list) res)
       ((cons? list)
        (rev* (rest list) (cons (first list) res))))))
+
+(rev-2 (list 1 2 3 4 5))
