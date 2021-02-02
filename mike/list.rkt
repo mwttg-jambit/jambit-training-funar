@@ -5,6 +5,9 @@
 ; - die leere Liste
 ; - eine Cons-Liste, bestehend aus erstem Element und Rest-Liste
 ;                                                          ^^^^^ Selbstbezug
+; Signaturkonstruktor
+(: list-of (signature -> signature))
+
 (define list-of
   (lambda (element)
     (signature (mixed empty-list
@@ -25,6 +28,8 @@
   (first element)
   (rest (list-of element)))
 
+; Bug:
+;(: list-of-numbers signature)
 (define list-of-numbers (signature (list-of number)))
 
 (define list1 (cons 7 empty)) ; 1elementige Liste: 7
