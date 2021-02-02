@@ -61,7 +61,7 @@
                         (cons (first list) (extract-evens (rest list)))
                         (extract-evens (rest list)))))))
 
-(define extract-positives
+#;(define extract-positives
   (lambda (list)
     (cond
       ((empty? list) list)
@@ -69,5 +69,52 @@
                         (cons (first list) (extract-evens (rest list)))
                         (extract-positives (rest list)))))))
 
-; 2 Listen aneinanderhängen
+; Abstraktion
+; 1. Schritt: kopieren
+; 2. Schritt: umbenennen (rekursive Aufrufe nicht vergessen!)
+; 3. Schritt: Unterschiede durch Variablen ersetzen
+; 4. Schritt: "Variablen in Lambda unterbringen" (neues Lambda oder altes erweitern)
+;             (rekursive Aufrufe nicht vergessen)
+
+; Elemente aus Liste extrahieren
+; (: positive? (number -> boolean))
+; (: even? (number -> boolean))
+
+(: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
+
+
+(define extract
+  (lambda (p? list)
+    (cond
+      ((empty? list) list)
+      ((cons? list) (if (p? (first list))
+                        (cons (first list) (extract p? (rest list)))
+                        (extract p? (rest list)))))))
+
+; Concatenate
 (: concat (list-of-numbers list-of-numbers -> list-of-numbers))
+
+(check-expect (concat list1 list2)
+              (cons 7(cons 3 (cons 7 empty))))
+(check-expect (concat empty list1)
+              list1)
+(check-expect (concat list2 empty)
+              list2)
+              
+(define concat
+  (lambda (list1 list2)
+    (cond
+      ((empty? list1) list2)
+      ; ((empty? list2) list1)
+      ((cons? list1) (cons (first list1)
+                           (concat (rest list1) list2))))))
+
+; ehrenhafter Fehlversuch
+#;(define concat2
+  (lambda (list1 list2)
+    (cond
+      ((empty? list2) ...)
+      ((cons? list2)
+       (first list2) ; 3
+       (concat2 list1 (rest list2)))))) ; 7 7, gewünscht: 7 3 7
+       
