@@ -82,6 +82,10 @@
 
 (: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
 
+(check-expect (extract even? (cons 1 (cons 4 (cons 7 (cons 10 (cons 12 empty))))))
+              (cons 4 (cons 10 (cons 12 empty))))
+(check-expect (extract positive? (cons 1 (cons -2 (cons 5 (cons -7 (cons -8 empty))))))
+              (cons 1 (cons 5 empty)))
 
 (define extract
   (lambda (p? list)
