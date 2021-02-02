@@ -283,6 +283,14 @@
 
 (map (lambda (animal) (feed-animal animal 2)) highway)
 
+(: specialize ((%a %b -> %c) %a -> (%b -> %c)))
+
+(define specialize
+  (lambda (f x)
+    (lambda (n)
+      (f x n))))
+
+(map (specialize feed-animal 2) highway)
 
 #|
 class Dillo {
