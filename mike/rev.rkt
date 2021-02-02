@@ -35,6 +35,7 @@
     (cond
       ((empty? list) res)
       ((cons? list)
+       ; tail call, Aufruf ohne Kontext, endrekursiver Aufruf
        (rev* (rest list) (cons (first list) res))))))
 
 (rev-2 (list 1 2 3 4 5))
