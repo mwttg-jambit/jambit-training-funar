@@ -290,7 +290,24 @@
     (lambda (n)
       (f x n))))
 
-(map (specialize feed-animal 2) highway)
+; Argumente einer 2stelligen Funktion vertauschen
+(: switch ((%e1 %e2 -> %e3) -> (%e2 %e1 -> %e3)))
+
+; QuickCheck, property-based testing
+(check-property
+ (for-all ((a number)
+           (b number))           
+   (= ((switch -) a b) (- a b))))
+  
+(check-expect ((switch -) 1 2) (- 2 1))
+
+(define switch
+  (lambda (f)
+    (lambda (e2 e1)
+      (f e1 e2))))
+
+
+; (map (specialize (switch feed-animal) 2) highway)
 
 #|
 class Dillo {
