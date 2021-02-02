@@ -41,3 +41,31 @@
        (rev* (rest list) (cons (first list) res))))))
 
 ; (rev-2 (list 1 2 3 4 5))
+
+(: extract-evens ((list-of number) -> (list-of number)))
+
+(check-expect (extract-evens (cons 1 (cons 4 (cons 7 (cons 10 (cons 12 empty))))))
+              (cons 4 (cons 10 (cons 12 empty))))
+
+#;(define extract-evens
+  (lambda (list)
+    (cond
+      ((empty? list) empty)
+      ((cons? list) (if (even? (first list))
+                        (cons (first list) (extract-evens (rest list)))
+                        (extract-evens (rest list)))))))
+
+(define extract-evens
+  (lambda (list0)
+    (extract-evens* list0 empty)))
+
+(define extract-evens*
+  (lambda (list res)
+    ; res enthält die geraden Zahlen unter den Listenelementen zwischen list0 und list
+    (cond
+      ((empty? list) res)
+      ((cons? list)
+       (extract-evens* (rest list)
+                       (if (even? (first list))
+                           (cons (first list) res)
+                           res))))))
