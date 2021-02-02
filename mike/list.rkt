@@ -164,3 +164,42 @@ A -> C ist SCHWÄCHER als B -> C
 
 ; (: cons (%element (list-of %element) -> (list-of %element)))
 ; (: list (%element ... -> (list-of %element)))
+
+(define inc
+  (lambda (n)
+    (+ 1 n)))
+
+(define inc5
+  (lambda (n)
+    (+ 5 n)))
+
+; Funktionsfabrik, "Spezialisierung"
+(: incx (number -> (number -> number)))
+(define incx
+  (lambda (x)
+    (lambda (n)
+      (+ x n))))
+
+(define mult2
+  (lambda (n)
+    (* 2 n)))
+(define mult3
+  (lambda (n)
+    (* 3 n)))
+(define multx
+  (lambda (x)
+    (lambda (n)
+      (* x n))))
+
+(: specialize ((%a %b -> %c) %a -> (%b -> %c)))
+
+(define specialize
+  (lambda (f x)
+    (lambda (n)
+      (f x n))))
+
+
+(map inc (list 1 2 3))
+;(map (lambda (n) (+ 5 n)) (list 1 2 3))
+(map (incx 5) (list 1 2 3))
+(map (specialize + 5) (list 1 2 3))
