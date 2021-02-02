@@ -80,6 +80,11 @@
 ; n : M
 ; für alle x \in M : x op n = n op x = x
 
+; beim Programmieren:
+; Typ / Signatur M
+; (: op (M M -> M))
+; (op (op a b) c) = (op a (op b c))
+
 ; Kommutativgesetzt:
 ; a op b = b op a
 
