@@ -58,6 +58,32 @@
       ((cons? list) (* (first list)
                        (list-product (rest list)))))))
 
+(: list-fold (%b (%a %b -> %b) (list-of %a) -> %b))
+
+(check-expect (list-fold 0 + (list 1 2 3 4)) 10)
+
+(define list-fold
+  (lambda (for-empty for-cons list)
+    (cond
+      ((empty? list) for-empty)
+      ((cons? list) (for-cons (first list)
+                              (list-fold for-empty for-cons (rest list)))))))
+
+; Halbgruppe:
+; Mathematik:
+; Menge M
+; op : M x M -> M
+; Assoziativgesetz:
+; (a op b) op c = a op (b op c)
+
+; Halbgruppe + neutrales Element = Monoid
+; n : M
+; für alle x \in M : x op n = n op x = x
+
+; Kommutativgesetzt:
+; a op b = b op a
+
+
 ; Alle geraden Elemente einer Liste extrahieren
 (: extract-evens (list-of-numbers -> list-of-numbers))
 
