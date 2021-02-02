@@ -1,6 +1,6 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
-#reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname intro) (read-case-sensitive #f) (teachpacks ((lib "image.rkt" "teachpack" "deinprogramm" "sdp"))) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ((lib "image.rkt" "teachpack" "deinprogramm" "sdp")))))
+#reader(lib "vanilla-reader.rkt" "deinprogramm" "sdp")((modname intro) (read-case-sensitive #f) (teachpacks ((lib "image.rkt" "teachpack" "deinprogramm" "sdp"))) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ((lib "image.rkt" "teachpack" "deinprogramm" "sdp")))))
 ; Hier: Editor, unten: REPL
 (define x (+ 12 42))
 (define y
@@ -278,7 +278,11 @@
     (cond
       ((dillo? animal) (feed-dillo animal amount))
       ((snake? animal) (feed-snake animal amount)))))
-                      
+
+(define highway (list dillo1 snake1 dillo2 snake2))
+
+(map (lambda (animal) (feed-animal animal 2)) highway)
+
 
 #|
 class Dillo {
