@@ -207,7 +207,7 @@ A -> C ist SCHWÄCHER als B -> C
         (f x n)))))
 (define curry schönfinkeln)
 
-(: entschönfinkeln ((%a -> (%b -> %c)) -> (%a %b -> %c))
+(: entschönfinkeln ((%a -> (%b -> %c)) -> (%a %b -> %c)))
 
 (define s+ (schönfinkeln +))
 
