@@ -1,11 +1,12 @@
 ;; Die ersten drei Zeilen dieser Datei wurden von DrRacket eingefügt. Sie enthalten Metadaten
 ;; über die Sprachebene dieser Datei in einer Form, die DrRacket verarbeiten kann.
-#reader(lib "beginner-reader.rkt" "deinprogramm" "sdp")((modname list) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
+#reader(lib "vanilla-reader.rkt" "deinprogramm" "sdp")((modname list) (read-case-sensitive #f) (teachpacks ()) (deinprogramm-settings #(#f write repeating-decimal #f #t none explicit #f ())))
 ; Eine Liste (von Zahlen) ist eins der folgenden:
 ; - die leere Liste
 ; - eine Cons-Liste, bestehend aus erstem Element und Rest-Liste
 ;                                                          ^^^^^ Selbstbezug
 ; Signaturkonstruktor
+#|
 (: list-of (signature -> signature))
 
 (define list-of
@@ -27,6 +28,7 @@
   cons?
   (first element)
   (rest (list-of element)))
+|#
 
 ; Bug:
 ;(: list-of-numbers signature)
@@ -105,7 +107,8 @@
                         (extract p? (rest list)))))))
 
 ; Concatenate
-(: concat (list-of-numbers list-of-numbers -> list-of-numbers))
+; %element: Signaturvariable ... Generics
+(: concat ((list-of %element) (list-of %element) -> (list-of %element)))
 
 (check-expect (concat list1 list2)
               (cons 7(cons 3 (cons 7 empty))))
