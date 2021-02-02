@@ -32,6 +32,8 @@
 
 (define rev*
   (lambda (list res) ; Zwischenergebnis: bisher gesehene Listenelemente, umgedreht
+    ; Schleifeninvariante: Aussage, die list0, list und res in Beziehung setzen
+    ; res enthält die Elemente von list0 bis list in umgekehrter Reihenfolge
     (cond
       ((empty? list) res)
       ((cons? list)
