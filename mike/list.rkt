@@ -161,4 +161,6 @@ A -> C ist SCHWÄCHER als B -> C
       ((cons? list2)
        (first list2) ; 3
        (concat2 list1 (rest list2)))))) ; 7 7, gewünscht: 7 3 7
-       
+
+; (: cons (%element (list-of %element) -> (list-of %element)))
+; (: list (%element ... -> (list-of %element)))
