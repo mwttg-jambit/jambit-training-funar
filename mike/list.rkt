@@ -91,7 +91,7 @@
 ; (: positive? (number -> boolean))
 ; (: even? (number -> boolean))
 
-(: extract ((number -> boolean) list-of-numbers -> list-of-numbers))
+(: extract ((%element -> boolean) (list-of %element) -> (list-of %element)))
 
 (check-expect (extract even? (cons 1 (cons 4 (cons 7 (cons 10 (cons 12 empty))))))
               (cons 4 (cons 10 (cons 12 empty))))
