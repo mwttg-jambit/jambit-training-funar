@@ -216,6 +216,14 @@ A -> C ist SCHWÄCHER als B -> C
 
 (define s+ (schönfinkeln +))
 
+(check-property
+ (for-all ((f (string number -> boolean)) ; leider keine Signaturvariablen möglich
+           (a string)
+           (b number))
+   (boolean=?
+    (f a b)
+    (((schönfinkeln f) a) b))))
+
 (map inc (list 1 2 3))
 ;(map (lambda (n) (+ 5 n)) (list 1 2 3))
 (map (incx 5) (list 1 2 3))
