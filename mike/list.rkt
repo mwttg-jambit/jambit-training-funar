@@ -198,6 +198,18 @@ A -> C ist SCHWÄCHER als B -> C
     (lambda (n)
       (f x n))))
 
+(: schönfinkeln ((%a %b -> %c) -> (%a -> (%b -> %c))))
+
+(define schönfinkeln
+  (lambda (f)
+    (lambda (x)
+      (lambda (n)
+        (f x n)))))
+(define curry schönfinkeln)
+
+(: entschönfinkeln ((%a -> (%b -> %c)) -> (%a %b -> %c))
+
+(define s+ (schönfinkeln +))
 
 (map inc (list 1 2 3))
 ;(map (lambda (n) (+ 5 n)) (list 1 2 3))
