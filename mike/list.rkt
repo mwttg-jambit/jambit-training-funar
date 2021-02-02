@@ -93,6 +93,34 @@
 
 (: extract ((%element -> boolean) (list-of %element) -> (list-of %element)))
 
+#|
+(extract even? (list "Mike"))
+(: even? (number -> boolean))
+NICHT:
+(: even? (any -> boolean))
+
+=>
+
+%element = number
+
+(: (list "Mike") (list-of number)) NEIN!
+
+any Obermenge number
+
+(A -> C)
+(B -> C)
+
+A < B
+=>
+(A -> C) > (B -> C)
+
+Funktionssignaturen sind KONTRAVARIANT in der Argumentsignatur
+
+A -> C KANN WENIGER als B -> C
+A -> C ist SCHWÄCHER als B -> C
+
+|#
+
 (check-expect (extract even? (cons 1 (cons 4 (cons 7 (cons 10 (cons 12 empty))))))
               (cons 4 (cons 10 (cons 12 empty))))
 (check-expect (extract positive? (cons 1 (cons -2 (cons 5 (cons -7 (cons -8 empty))))))
