@@ -209,6 +209,11 @@ A -> C ist SCHWÄCHER als B -> C
 
 (: entschönfinkeln ((%a -> (%b -> %c)) -> (%a %b -> %c)))
 
+(define entschönfinkeln
+  (lambda (f)
+    (lambda (a b)
+      ((f a) b))))
+
 (define s+ (schönfinkeln +))
 
 (map inc (list 1 2 3))
