@@ -61,3 +61,5 @@ runOverDillo :: Dillo -> Dillo
 -- runOverDillo (Dillo _ weight) = Dillo Dead weight
 -- runOverDillo (Dillo {dilloLiveness = liveness, dilloWeight = weight }) = Dillo Dead weight 
 runOverDillo dillo = dillo { dilloLiveness = Dead }
+
+-- Ein Papagei hat folgende 
