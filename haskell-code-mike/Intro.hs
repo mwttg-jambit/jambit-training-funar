@@ -210,14 +210,15 @@ sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
 
 primes = sieve (natsFrom 2)
 
-data Map key value = Map [(key, value)]
+data Map key value = Map { unMap :: [(key, value)] }
   deriving Show
 
 mapMap :: (a -> b) -> (Map key) a -> (Map key) b
 mapMap f (Map []) = Map []
 mapMap f (Map ((key,value):rest)) =
-    case mapMap f (Map rest) of
-        Map rest' -> Map ((key, f value):rest')
+--    case mapMap f (Map rest) of
+--      Map rest' -> Map ((key, f value):rest')
+  let 
 
 map1 :: Map String String
 map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
@@ -273,4 +274,6 @@ maybeMap :: (a -> b) -> Maybe a -> Maybe b
 maybeMap f Nothing = Nothing
 maybeMap f (Just result) = Just (f result)
 
-class Functor 
+-- f ist Maybe, List, Map key
+class Functor f where
+    universalMap :: (a -> b) -> f a -> f b
