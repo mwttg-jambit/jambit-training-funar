@@ -211,7 +211,8 @@ sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
 primes = sieve (natsFrom 2)
 
 data Map key value = Map [(key, value)]
-
+  deriving Show
+  
 mapMap :: (a -> b) -> (Map key) a -> (Map key) b
 mapMap f (Map []) = Map []
 mapMap f (Map ((key,value):rest)) =
