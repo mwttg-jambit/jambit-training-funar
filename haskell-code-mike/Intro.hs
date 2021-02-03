@@ -305,6 +305,7 @@ instance Functor (Map key) where
    result (x+y)
 -}
 
+{-
 data DBCommand =
     Put String Integer
   | Get String
@@ -314,3 +315,8 @@ type DBProgram = [DBCommand]
 p1 = [Put "Mike" 17,
       Get "Mike",
       Put "Mike" (x+1)]
+-}
+
+data DB =
+    Get String (Integer -> DB)
+  | Put String Integer (() -> DB)
