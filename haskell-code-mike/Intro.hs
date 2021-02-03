@@ -247,3 +247,5 @@ class Semigroup a where
     -- a `combine` (b `combine` c) == (a `combine` b) `combine c
     combine :: a -> a -> a
 
+instance Semigroup [a] where
+    combine = 
