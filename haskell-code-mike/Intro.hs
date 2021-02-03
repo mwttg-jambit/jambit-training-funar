@@ -82,9 +82,13 @@ data Animal =
   | Parrot String Double
   deriving Show
 
+dillo1 :: Animal
 dillo1 = Dillo Alive 10
+dillo2 :: Animal
 dillo2 = Dillo Dead 8
+parrot1 :: Animal
 parrot1 = Parrot "Hallo!" 1
+parrot2 :: Animal
 parrot2 = Parrot "Goodbye!" 2
 
 -- Tier überfahren
