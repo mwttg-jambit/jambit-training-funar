@@ -250,3 +250,9 @@ class Semigroup a where
 instance Semigroup [a] where
     combine = (++)
 
+class Semigroup a => Monoid a where
+    -- a `combine` neutral == neutral `combine` a == a
+    neutral :: a
+
+instance Monoid [a] where
+    neutral = []
