@@ -195,7 +195,8 @@ data Map key value = Map [(key, value)]
 map1 :: Map String String
 map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
 
-mapGet :: key -> Map key value -> value
+-- Eq key: Constraint "Der Typ key muß Gleichheit unterstützen"
+mapGet :: Eq key => key -> Map key value -> value
 mapGet key (Map []) = undefined
 mapGet key (Map ((key', value'):rest)) =
     if key == key'
