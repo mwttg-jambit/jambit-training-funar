@@ -11,6 +11,8 @@ x = 42
 data Pet = Dog | Cat | Snake
     deriving Show
 
+
+
 -- Großbuchstaben: "konstant"
 -- Kleinbuchstaben: Variable
 
