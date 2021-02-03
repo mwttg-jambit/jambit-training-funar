@@ -54,5 +54,6 @@ dillo2 = Dillo Dead 8
 
 -- Gürteltier überfahren
 runOverDillo :: Dillo -> Dillo
-runOverDillo dillo =
-    Dillo { dilloLiveness = Dead, dilloWeight = dilloWeight dillo }
+-- runOverDillo dillo =
+--    Dillo { dilloLiveness = Dead, dilloWeight = dilloWeight dillo }
+runOverDillo dillo = Dillo Dead (dilloWeight dillo)
