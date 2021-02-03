@@ -231,10 +231,13 @@ mapGet key (Map ((key', value'):rest)) =
 -- eingebaut:
 {-
 class Eq a where
+  - Äquivalenzrelation
   -- Symmetrie:
   -- a == b => b == a
   -- Transitivität
   -- (a == b) && (b == c) => a == c
+  -- Reflexivität
+  -- a == a
   (==) :: a -> a -> Bool
 -}
 
