@@ -154,3 +154,5 @@ data List a =
 -- die leere Liste: []
 -- Cons-Liste: first : rest
 -- [1,2,3,4]
+
+listSum :: [Double] -> Double
