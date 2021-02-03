@@ -284,6 +284,7 @@ identity x = x
 -- f ist Maybe, List, Map key
 class Functor f where
     -- universalMap identity x == x
+    -- universalMap (f . g) == (universalMap f) . (universalMap g)
     universalMap :: (a -> b) -> f a -> f b
 
 instance Functor Maybe where
