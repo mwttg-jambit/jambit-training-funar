@@ -11,7 +11,11 @@ x = 42
 data Pet = Dog | Cat | Snake
     deriving Show
 
-
+instance Eq Pet where
+  (==) Dog Dog = True
+  (==) Cat Cat = True
+  (==) Snake Snake = True
+  (==) _ _ = False 
 
 -- Großbuchstaben: "konstant"
 -- Kleinbuchstaben: Variable
