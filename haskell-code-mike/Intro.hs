@@ -1,6 +1,7 @@
 module Intro where
 
 import Prelude hiding (Semigroup, Monoid, Functor)
+import Prelude as Prelude
 
 -- x :: Integer
 -- x = 42
@@ -347,7 +348,7 @@ result :: a -> DB a
 result = Result
 
 instance Prelude.Functor DB where
-    
+
 instance Applicative DB where
 
 instance Monad DB where
