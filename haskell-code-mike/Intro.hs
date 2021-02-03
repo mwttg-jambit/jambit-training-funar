@@ -31,7 +31,7 @@ isCute Snake = False
 -- - flüssig
 -- - gas
 data State = Solid | Liquid | Gas
-  deriving Show
+  deriving (Show, Eq)
 
 waterState :: Double -> State
 waterState temp =
