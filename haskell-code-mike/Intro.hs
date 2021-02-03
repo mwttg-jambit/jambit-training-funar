@@ -96,10 +96,10 @@ parrot2 = Parrot "Goodbye!" 2
 runOverAnimal :: Animal -> Animal
 -- Gleichungen werden nacheinander ausprobiert
 -- NICHT:
-runOverAnimal dillo = dillo { dilloLiveness = Dead }
+-- runOverAnimal dillo = dillo { dilloLiveness = Dead }
 -- OK:
 -- runOverAnimal dillo@(Dillo {}) =  dillo { dilloLiveness = Dead }
--- runOverAnimal (Dillo _ weight) = Dillo Dead weight
+runOverAnimal (Dillo _ weight) = Dillo Dead weight
 runOverAnimal (Parrot _ weight) = Parrot "" weight
-runOverAnimal dillo = dillo { dilloLiveness = Dead }
+-- runOverAnimal dillo = dillo { dilloLiveness = Dead }
 
