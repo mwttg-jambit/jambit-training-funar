@@ -123,5 +123,16 @@ feedAnimal' (amount, Dillo liveness weight) =
 feedAnimal' (amount, Parrot sentence weight) =
     Parrot sentence (weight + amount)
 
+{-
+(: schönfinkeln ((%a %b -> %c) -> (%a -> (%b -> %c))))
+
+(define schönfinkeln
+  (lambda (f)
+    (lambda (x)
+      (lambda (n)
+        (f x n)))))
+
+-}
 schoenfinkeln :: ((a, b) -> c) -> (a -> (b -> c))
 schoenfinkeln f =
+  \ x -> \ n -> f (x, n)
