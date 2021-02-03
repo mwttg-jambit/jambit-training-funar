@@ -213,12 +213,17 @@ data Map key value = Map [(key, value)]
 map1 :: Map String String
 map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
 
+{-
+data Maybe a =
+    Just a | Nothing
+-}
+
 -- Eq key: Constraint "Der Typ key muß Gleichheit unterstützen"
-mapGet :: Eq key => key -> Map key value -> value
-mapGet key (Map []) = undefined
+mapGet :: Eq key => key -> Map key value -> Maybe value
+mapGet key (Map []) = Nothing
 mapGet key (Map ((key', value'):rest)) =
     if key == key'
-    then value'
+    then Just value'
     else mapGet key (Map rest)
 
 -- Eq: Typklasse ---> eher wie "Interface"
