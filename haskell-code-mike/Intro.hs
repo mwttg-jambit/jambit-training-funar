@@ -161,3 +161,8 @@ listSum [] = 0
 listSum (first:rest) = first + (listSum rest)
 
 highway = [dillo1, parrot1, dillo2, parrot2]
+
+listFold forEmpty forCons [] = forEmpty
+listFold forEmpty forCons (x:xs) = 
+   x  (listFold forEmpty forCons xs)
+
