@@ -137,4 +137,6 @@ schoenfinkeln :: ((a, b) -> c) -> (a -> (b -> c))
 -- schoenfinkeln f = \ x -> \ n -> f (x, n)
 schoenfinkeln f x n = f (x, n)
 
-entschoenfinkeln :: 
+entschoenfinkeln :: (a -> b -> c) -> ((a, b) -> c)
+entschoenfinkeln f =
+    \ (a, b) -> (f a) b
