@@ -96,7 +96,10 @@ data Animal =
   deriving Show
 
 instance Eq Animal where
-    (Dillo )
+    (Dillo liveness1 weight1) == (Dillo liveness2 weight2) = 
+        (liveness1 == liveness2) && (weight1 == weight2)
+    (Parrot sentence1 weight1) == (Parrot sentence2 weight2) =
+        (sentence1 == sentence2) && (weight1 == weight2)
 
 dillo1 :: Animal
 dillo1 = Dillo Alive 10
