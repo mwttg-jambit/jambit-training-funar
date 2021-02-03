@@ -212,11 +212,11 @@ primes = sieve (natsFrom 2)
 
 data Map key value = Map [(key, value)]
   deriving Show
-  
+
 mapMap :: (a -> b) -> (Map key) a -> (Map key) b
 mapMap f (Map []) = Map []
 mapMap f (Map ((key,value):rest)) =
-    case mapMap f (Map rest) of
+    case mapMap f rest of
         Map rest' -> Map ((key, f value):rest')
 
 map1 :: Map String String
