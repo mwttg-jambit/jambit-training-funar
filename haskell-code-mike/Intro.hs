@@ -279,9 +279,11 @@ maybeMap :: (a -> b) -> Maybe a -> Maybe b
 maybeMap f Nothing = Nothing
 maybeMap f (Just result) = Just (f result)
 
+identity x = x
+
 -- f ist Maybe, List, Map key
 class Functor f where
-    
+    -- universalMap identity x == x
     universalMap :: (a -> b) -> f a -> f b
 
 instance Functor Maybe where
