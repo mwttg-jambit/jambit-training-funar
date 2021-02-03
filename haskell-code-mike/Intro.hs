@@ -298,6 +298,19 @@ instance Functor (Map key) where
 
 {-
    put "Mike" 17
-   x =
+   x = get "Mike"
+   put "Mike" (x + 1)
+   y = get "Mike"
 
+   result (x+y)
 -}
+
+data DBCommand =
+    Put String Integer
+  | Get String
+
+type DBProgram = [DBCommand]
+
+p1 = [Put "Mike" 17,
+      Get "Mike",
+      Put "Mike" (x+1)]
