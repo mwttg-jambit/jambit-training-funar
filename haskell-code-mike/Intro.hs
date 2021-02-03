@@ -190,3 +190,14 @@ sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
 
 primes = sieve (natsFrom 2)
 
+data Map key value = Map [(key, value)]
+
+map1 :: Map String String
+map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
+
+mapGet :: key -> Map key value -> value
+mapGet key (Map []) = undefined
+mapGet key (Map ((key', value'):rest)) =
+    if key == key'
+    then value'
+    else mapGet key (Map rest)
