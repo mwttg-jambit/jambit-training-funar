@@ -82,6 +82,11 @@ data Animal =
   | Parrot String Double
   deriving Show
 
+dillo1 = Dillo Alive 10
+dillo2 = Dillo Dead 8
+parrot1 = Parrot "Hallo!" 1
+parrot2 = Parrot "Goodbye!" 2
+
 -- Tier überfahren
 runOverAnimal :: Animal -> Animal
 runOverAnimal (Dillo _ weight) = Dillo Dead weight 
