@@ -114,3 +114,10 @@ feedAnimal amount (Parrot sentence weight) =
 
 feed5 :: Animal -> Animal
 feed5 = feedAnimal 5
+
+feedAnimal' (amount, Dillo liveness weight) =
+    case liveness of
+      Dead -> Dillo liveness weight
+      Alive -> Dillo liveness (weight + amount)
+feedAnimal' (amount, Parrot sentence weight) =
+    Parrot sentence (weight + amount)
