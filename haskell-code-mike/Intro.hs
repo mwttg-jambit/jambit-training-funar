@@ -19,3 +19,18 @@ isCute :: Pet -> Bool
 isCute Dog = True
 isCute Cat = True
 isCute Snake = False
+
+-- Aggregatzustand ist eins der folgenen:
+-- - fest
+-- - flüssig
+-- - gas
+data State = Solid | Liquid | Gas
+  deriving Show
+
+waterState :: Double -> State
+waterState temp =
+    if temp < 0
+    then Solid
+    else if temp < 100
+    then Liquid
+    else Gas
