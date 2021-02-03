@@ -248,4 +248,5 @@ class Semigroup a where
     combine :: a -> a -> a
 
 instance Semigroup [a] where
-    combine = 
+    combine = (++)
+
