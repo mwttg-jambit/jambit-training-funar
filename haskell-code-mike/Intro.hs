@@ -212,6 +212,8 @@ primes = sieve (natsFrom 2)
 
 data Map key value = Map [(key, value)]
 
+mapMap :: (a -> b) -> Map key a -> Map key b
+
 map1 :: Map String String
 map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
 
@@ -256,3 +258,12 @@ class Semigroup a => Monoid a where
 
 instance Monoid [a] where
     neutral = []
+
+-- listMap :: (a -> b) -> [a] -> [b]
+-- listMap :: (a -> b) -> List a -> List b
+listMap f [] = []
+listMap f (x:xs) = (f x) : (listMap f xs)
+
+maybeMap :: (a -> b) -> Maybe a -> Maybe b 
+maybeMap f Nothing = Nothing
+maybeMap f (Just result) = Just (f result)
