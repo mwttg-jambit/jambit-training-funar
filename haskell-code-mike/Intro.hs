@@ -9,4 +9,4 @@ x = 42
 -- - Schlange
 -- data: neuer Datentyp
 data Pet = Dog | Cat | Snake
-  deriving Show
+--  deriving Show
