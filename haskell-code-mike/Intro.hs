@@ -243,3 +243,7 @@ class Eq a where
   (==) :: a -> a -> Bool
 -}
 
+class Semigroup a where
+    -- a `combine` (b `combine` c) == (a `combine` b) `combine c
+    combine :: a -> a -> a
+
