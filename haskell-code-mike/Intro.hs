@@ -187,3 +187,5 @@ strikeMultiples n ns = filter (\ x -> x `mod` n /= 0) ns
 -- als Primzahl identifiziert ist
 -- Ausgabe: Primzahlen
 sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
+
+primes = sieve (natsFrom 2)
