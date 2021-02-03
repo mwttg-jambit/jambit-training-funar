@@ -320,3 +320,11 @@ p1 = [Put "Mike" 17,
 data DB =
     Get String         (Integer -> DB)
   | Put String Integer (()      -> DB)
+  | Result Integer
+
+
+p1 = Put "Mike" 17 (\() ->
+     Get "Mike" (\x ->
+     Put "Mike" (x + 1) (\() ->
+     Get "Mike" (\y ->
+     Result (x+y)))))
