@@ -329,6 +329,30 @@ p1 = Put "Mike" 17 (\() ->
      Get "Mike" (\y ->
      Result (show (x+y))))))
 
+get :: String -> DB Integer
+get key = Get key (\value -> Result value)
+
+put :: String -> Integer -> DB ()
+put key value = Put key value (\() -> Result ())
+
+splice :: DB a -> (a -> DB b) -> DB b
+splice (Get key callback) next =
+    Get key (\ value -> splice (callback value) next)
+splice (Put key value callback) next =
+    Put key value (\ () -> splice (callback ()) next)
+splice (Result result) next = next result
+-- result :: a
+
+result = Result
+
+p1' = put "Mike" 17 `splice` (\() ->
+      get "Mike" `splice` (\x ->
+      put "Mike" (x+1) `splice` (\() ->
+      get "Mike" `splice` (\y ->
+      result (show (x+y))))))
+
+    
+
 runDB :: DB a -> Map String Integer -> a
 runDB (Get key callback) db =
     case mapGet key db of
