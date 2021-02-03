@@ -361,6 +361,11 @@ p1' = put "Mike" 17 `splice` (\() ->
       get "Mike" `splice` (\y ->
       result (show (x+y))))))
 
+p1'' = do put "Mike" 17
+          x <- get "Mike"
+          put "Mike" (x+1)
+          y <- get "Mike"
+          result (show (x+y))
     
 
 runDB :: DB a -> Map String Integer -> a
