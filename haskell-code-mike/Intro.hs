@@ -167,5 +167,5 @@ listFold forEmpty forCons [] = forEmpty
 listFold forEmpty forCons (x :                                    xs) = 
                            x `forCons` (listFold forEmpty forCons xs)
 
-natsFrom :: Integer -> Integer
+natsFrom :: Integer -> [Integer]
 natsFrom n = n : (natsFrom (n+1))
