@@ -181,4 +181,4 @@ natsFrom n = n : (natsFrom (n+1))
 
 -- alle Vielfachen einer Zahl aus einer Liste entfernen
 strikeMultiples :: Integer -> [Integer] -> [Integer]
-strikeMultiples n ns = filter (\ x -> x `modulo` n /= 0) ns
+strikeMultiples n ns = filter (\ x -> x `mod` n /= 0) ns
