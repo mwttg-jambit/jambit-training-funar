@@ -182,3 +182,8 @@ natsFrom n = n : (natsFrom (n+1))
 -- alle Vielfachen einer Zahl aus einer Liste entfernen
 strikeMultiples :: Integer -> [Integer] -> [Integer]
 strikeMultiples n ns = filter (\ x -> x `mod` n /= 0) ns
+
+-- Eingabe: Liste von Primzahl-Kandidaten, bei denen die erste Zahl
+-- als Primzahl identifiziert ist
+-- Ausgabe: Primzahlen
+sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
