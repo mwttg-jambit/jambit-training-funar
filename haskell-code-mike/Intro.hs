@@ -144,7 +144,7 @@ entschoenfinkeln f =
 -- Ein Liste ist eins der folgenden:
 -- - die leere Liste
 -- - eine Cons-Liste aus erstem Element und Rest-Liste
-data List =
+data List a =
     Empty
-  | Cons Double List
+  | Cons a (List a)
   deriving Show
