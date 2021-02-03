@@ -134,5 +134,7 @@ feedAnimal' (amount, Parrot sentence weight) =
 
 -}
 schoenfinkeln :: ((a, b) -> c) -> (a -> (b -> c))
-schoenfinkeln f =
-  \ x -> \ n -> f (x, n)
+-- schoenfinkeln f = \ x -> \ n -> f (x, n)
+schoenfinkeln f x n = f (x, n)
+
+entschoenfinkeln :: 
