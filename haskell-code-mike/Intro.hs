@@ -171,6 +171,10 @@ listFold forEmpty forCons (x :                                    xs) =
 Java, Racket:
 Bei einem Funktions-/Methodenaufruf werden zunächst alle Argumente ausgewertet,
 bevor die Ausführung mit dem Rumpf der Funktion weitergeht.
+strikte Programmiersprachen
+
+Haskell:
+Ein Ausdruck wird erst dann ausgewertet, wenn der Wert benötigt wird.
 -}
 natsFrom :: Integer -> [Integer]
 natsFrom n = n : (natsFrom (n+1))
