@@ -62,4 +62,12 @@ runOverDillo :: Dillo -> Dillo
 -- runOverDillo (Dillo {dilloLiveness = liveness, dilloWeight = weight }) = Dillo Dead weight 
 runOverDillo dillo = dillo { dilloLiveness = Dead }
 
--- Ein Papagei hat folgende 
+-- Ein Papagei hat folgende Eigenschaften:
+-- - Satz
+-- - Gewicht
+data Parrot = Parrot String Double
+  deriving Show
+
+-- Papagei überfahren
+runOverParrot :: Parrot -> Parrot
+runOverParrot (Parrot sentence weight) = Parrot "" weight
