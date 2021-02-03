@@ -44,3 +44,5 @@ data Liveness = Dead | Alive
 data Dillo = Dillo { dilloLiveness :: Liveness, dilloWeight :: Double }
 --   ^^^^Typ  ^^^^ Konstruktor
   deriving Show
+
+dillo1 = 
