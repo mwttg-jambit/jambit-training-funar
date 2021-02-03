@@ -330,3 +330,14 @@ p1 = Put "Mike" 17 (\() ->
      Result (show (x+y))))))
 
 runDB :: DB a -> Map String Integer -> a
+runDB (Get key callback) db =
+    case mapGet key db of
+        Nothing -> undefined
+        Just value -> runDB (callback value) db
+runDB (Put key value callback) db =
+    let db' = mapPut key value db
+    in runDB (callback ()) db'
+runDB (Result result) db = result
+
+mapPut :: key -> value -> Map key value -> Map key value
+mapPut key value (Map list) = Map ((key, value):list)
