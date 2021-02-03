@@ -2,8 +2,8 @@ module Intro where
 
 import Prelude hiding (Semigroup, Monoid, Functor)
 
-x :: Integer
-x = 42
+-- x :: Integer
+-- x = 42
 
 -- Ein Haustier ist eins der folgenden:
 -- - Hund
