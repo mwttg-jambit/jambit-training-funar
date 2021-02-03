@@ -352,6 +352,7 @@ instance Prelude.Functor DB where
 instance Applicative DB where
 
 instance Monad DB where
+    -- ausgesprochen "bind", in manchen anderen Sprachen (Scala, Java): flatMap
     (>>=) = splice
     return = result
 
