@@ -189,3 +189,4 @@ strikeMultiples n ns = filter (\ x -> x `mod` n /= 0) ns
 sieve (prime:rest) = prime : (sieve (strikeMultiples prime rest))
 
 primes = sieve (natsFrom 2)
+
