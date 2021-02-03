@@ -47,6 +47,12 @@ waterState temp =
 data Liveness = Dead | Alive
   deriving Show
 
+instance Eq Liveness where
+  Dead == Dead = True
+  Alive == Alive = True
+  _ == _ = False
+
+
 {-
 data Dillo = Dillo { dilloLiveness :: Liveness, dilloWeight :: Double }
 --   ^^^^Typ  ^^^^ Konstruktor
@@ -88,6 +94,9 @@ data Animal =
     Dillo { dilloLiveness :: Liveness, dilloWeight :: Double}
   | Parrot String Double
   deriving Show
+
+instance Eq Animal where
+    (Dillo )
 
 dillo1 :: Animal
 dillo1 = Dillo Alive 10
