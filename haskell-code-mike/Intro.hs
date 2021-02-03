@@ -1,7 +1,7 @@
 module Intro where
 
 import Prelude hiding (Semigroup, Monoid, Functor)
-import Prelude as Prelude
+import qualified Prelude as Prelude
 
 -- x :: Integer
 -- x = 42
