@@ -34,3 +34,13 @@ waterState temp =
     else if temp < 100
     then Liquid
     else Gas
+
+-- Ein Gürteltier:
+-- - tot oder lebendig
+-- - Gewicht
+data Liveness = Dead | Alive
+  deriving Show
+
+data Dillo = Dillo { dilloLiveness :: Liveness, dilloWeight :: Double }
+--   ^^^^Typ  ^^^^ Konstruktor
+  deriving Show
