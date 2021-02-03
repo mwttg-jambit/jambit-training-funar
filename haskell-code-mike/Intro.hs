@@ -122,3 +122,6 @@ feedAnimal' (amount, Dillo liveness weight) =
       Alive -> Dillo liveness (weight + amount)
 feedAnimal' (amount, Parrot sentence weight) =
     Parrot sentence (weight + amount)
+
+schoenfinkeln :: ((a, b) -> c) -> (a -> (b -> c))
+schoenfinkeln f =
