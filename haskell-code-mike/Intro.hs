@@ -178,3 +178,7 @@ Ein Ausdruck wird erst dann ausgewertet, wenn der Wert benötigt wird.
 -}
 natsFrom :: Integer -> [Integer]
 natsFrom n = n : (natsFrom (n+1))
+
+-- alle Vielfachen einer Zahl aus einer Liste entfernen
+strikeMultiples :: Integer -> [Integer] -> [Integer]
+strikeMultiples n ns = 
