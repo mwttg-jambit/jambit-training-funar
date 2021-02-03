@@ -155,4 +155,7 @@ data List a =
 -- Cons-Liste: first : rest
 -- [1,2,3,4]
 
+-- Listelemente aufsummieren
 listSum :: [Double] -> Double
+listSum [] = 0
+listSum (first:rest) = first + (listSum rest)
