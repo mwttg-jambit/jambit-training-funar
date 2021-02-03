@@ -218,7 +218,12 @@ mapMap f (Map []) = Map []
 mapMap f (Map ((key,value):rest)) =
 --    case mapMap f (Map rest) of
 --      Map rest' -> Map ((key, f value):rest')
-  let 
+  let Map rest' = mapMap f (Map rest)
+  in Map ((key, f value):rest')
+
+y = let a = 5
+        b = 7
+    in a + b
 
 map1 :: Map String String
 map1 = Map [("Mike", "Sperber"), ("Anton", "Schreck")]
