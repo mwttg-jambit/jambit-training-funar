@@ -295,3 +295,9 @@ instance Functor [] where
 
 instance Functor (Map key) where
     universalMap = mapMap
+
+{-
+   put "Mike" 17
+   x =
+
+-}
