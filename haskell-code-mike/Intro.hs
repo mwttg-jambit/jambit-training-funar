@@ -140,3 +140,10 @@ schoenfinkeln f x n = f (x, n)
 entschoenfinkeln :: (a -> b -> c) -> ((a, b) -> c)
 entschoenfinkeln f =
     \ (a, b) -> (f a) b
+
+-- Ein Liste ist eins der folgenden:
+-- - die leere Liste
+-- - eine Cons-Liste aus erstem Element und Rest-Liste
+data List =
+    Empty
+  | Cons Double List
