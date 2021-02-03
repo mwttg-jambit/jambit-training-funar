@@ -317,14 +317,16 @@ p1 = [Put "Mike" 17,
       Put "Mike" (x+1)]
 -}
 
-data DB =
-    Get String         (Integer -> DB)
-  | Put String Integer (()      -> DB)
-  | Result Integer
+data DB a =
+    Get String         (Integer -> DB a)
+  | Put String Integer (()      -> DB a)
+  | Result a
 
 
 p1 = Put "Mike" 17 (\() ->
      Get "Mike" (\x ->
      Put "Mike" (x + 1) (\() ->
      Get "Mike" (\y ->
-     Result (x+y)))))
+     Result (show (x+y))))))
+
+runDB :: DB a -> Map String Integer -> a
