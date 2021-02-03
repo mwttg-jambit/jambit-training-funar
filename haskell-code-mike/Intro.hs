@@ -167,5 +167,10 @@ listFold forEmpty forCons [] = forEmpty
 listFold forEmpty forCons (x :                                    xs) = 
                            x `forCons` (listFold forEmpty forCons xs)
 
+{-
+Java, Racket:
+Bei einem Funktions-/Methodenaufruf werden zunächst alle Argumente ausgewertet,
+bevor die Ausführung mit dem Rumpf der Funktion weitergeht.
+-}
 natsFrom :: Integer -> [Integer]
 natsFrom n = n : (natsFrom (n+1))
