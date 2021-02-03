@@ -281,4 +281,14 @@ maybeMap f (Just result) = Just (f result)
 
 -- f ist Maybe, List, Map key
 class Functor f where
+    
     universalMap :: (a -> b) -> f a -> f b
+
+instance Functor Maybe where
+    universalMap = maybeMap
+
+instance Functor [] where
+    universalMap = listMap
+
+instance Functor (Map key) where
+    universalMap = mapMap
