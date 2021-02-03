@@ -216,7 +216,7 @@ data Map key value = Map [(key, value)]
 mapMap :: (a -> b) -> (Map key) a -> (Map key) b
 mapMap f (Map []) = Map []
 mapMap f (Map ((key,value):rest)) =
-    case mapMap f rest of
+    case mapMap f (Map rest) of
         Map rest' -> Map ((key, f value):rest')
 
 map1 :: Map String String
@@ -272,3 +272,5 @@ listMap f (x:xs) = (f x) : (listMap f xs)
 maybeMap :: (a -> b) -> Maybe a -> Maybe b 
 maybeMap f Nothing = Nothing
 maybeMap f (Just result) = Just (f result)
+
+class Functor 
