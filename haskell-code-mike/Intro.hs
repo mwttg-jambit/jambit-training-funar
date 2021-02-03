@@ -41,6 +41,7 @@ waterState temp =
 data Liveness = Dead | Alive
   deriving Show
 
+{-
 data Dillo = Dillo { dilloLiveness :: Liveness, dilloWeight :: Double }
 --   ^^^^Typ  ^^^^ Konstruktor
   deriving Show
@@ -71,3 +72,12 @@ data Parrot = Parrot String Double
 -- Papagei überfahren
 runOverParrot :: Parrot -> Parrot
 runOverParrot (Parrot sentence weight) = Parrot "" weight
+-}
+
+-- Ein Tier ist eins der folgenden:
+-- - ein Gürteltier
+-- - ein Papagei
+data Animal =
+    Dillo { dilloLiveness :: Liveness, dilloWeight :: Double}
+  | Parrot String Double
+
