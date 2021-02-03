@@ -80,4 +80,4 @@ runOverParrot (Parrot sentence weight) = Parrot "" weight
 data Animal =
     Dillo { dilloLiveness :: Liveness, dilloWeight :: Double}
   | Parrot String Double
-
+  deriving Show
