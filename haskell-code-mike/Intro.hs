@@ -147,3 +147,4 @@ entschoenfinkeln f =
 data List =
     Empty
   | Cons Double List
+  deriving Show
