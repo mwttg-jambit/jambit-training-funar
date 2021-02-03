@@ -202,3 +202,5 @@ mapGet key (Map ((key', value'):rest)) =
     if key == key'
     then value'
     else mapGet key (Map rest)
+
+-- Eq: Typklasse ---> eher wie "Interface"
