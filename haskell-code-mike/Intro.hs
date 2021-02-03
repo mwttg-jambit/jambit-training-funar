@@ -204,3 +204,9 @@ mapGet key (Map ((key', value'):rest)) =
     else mapGet key (Map rest)
 
 -- Eq: Typklasse ---> eher wie "Interface"
+-- Implementierung: Instanz / instance
+-- eingebaut:
+{-
+class Eq a where
+  (==) :: a -> a -> Bool
+-}
