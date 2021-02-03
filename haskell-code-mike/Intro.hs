@@ -343,7 +343,12 @@ splice (Put key value callback) next =
 splice (Result result) next = next result
 -- result :: a
 
+result :: a -> DB a
 result = Result
+
+instance Monad DB where
+    (>>=) = splice
+    return = result
 
 p1' = put "Mike" 17 `splice` (\() ->
       get "Mike" `splice` (\x ->
