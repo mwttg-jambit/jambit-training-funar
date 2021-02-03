@@ -346,6 +346,10 @@ splice (Result result) next = next result
 result :: a -> DB a
 result = Result
 
+instance Prelude.Functor DB where
+    
+instance Applicative DB where
+
 instance Monad DB where
     (>>=) = splice
     return = result
