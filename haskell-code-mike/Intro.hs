@@ -144,7 +144,13 @@ entschoenfinkeln f =
 -- Ein Liste ist eins der folgenden:
 -- - die leere Liste
 -- - eine Cons-Liste aus erstem Element und Rest-Liste
+{-
 data List a =
     Empty
   | Cons a (List a)
   deriving Show
+-}
+
+-- die leere Liste: []
+-- Cons-Liste: first : rest
+-- [1,2,3,4]
