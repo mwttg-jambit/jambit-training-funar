@@ -318,5 +318,5 @@ p1 = [Put "Mike" 17,
 -}
 
 data DB =
-    Get String (Integer -> DB)
-  | Put String Integer (() -> DB)
+    Get String         (Integer -> DB)
+  | Put String Integer (()      -> DB)
