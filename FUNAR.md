@@ -15,7 +15,7 @@ dafür folgendes machen:
 
 https://code.visualstudio.com/docs/setup/mac#_command-line
 
-In VSCode die Extension "Metals" intstallieren.
+In VSCode die Extension "Metals" installieren.
 
 Beispielprojekt erzeugen, als Name `scala-example` wählen:
 
