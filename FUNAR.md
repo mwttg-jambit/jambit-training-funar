@@ -1,4 +1,6 @@
-# Technische Vorbereitung
+# Schulung "Funktionale Softarearchitektur" mit Scala
+
+## Technische Vorbereitung
 
 sbt installieren:
 
@@ -13,20 +15,26 @@ dafür folgendes machen:
 
 https://code.visualstudio.com/docs/setup/mac#_command-line
 
+In VSCode die Extension "Metals" intstallieren.
+
 Beispielprojekt erzeugen, als Name `scala-example` wählen:
 
 ```
-sbt new lampepfl/dotty.g8
+sbt new scala/hello-world.g8
 ```
 
 Dann:
 
 ```
 cd scala-example
-sbt launchIDE
 ```
 
-Das sollte alles ohne Fehler durchlaufen.
+Dann den Order `scala-example` in VSCode öffnen.  Die Metals-Extension
+sollte sich melden. 
+
+Wenn die alles heruntergeladen hat, als Test die Datei `Main.scala`
+öffnen und dort absichtlich Fehler machen - die sollten dann rot
+unterkringelt sein.
 
 # Bei Problemen:
 
