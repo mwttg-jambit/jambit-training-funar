@@ -35,6 +35,12 @@ object Intro {
   // "value class / value objects"
   sealed trait Animal {
     def runOver(): Animal
+
+    def runOver2(): Animal =
+      this match {
+        case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
+        case Parrot(sentence, weight) => Parrot("", weight)
+      }
   }
   case class Dillo(liveness: Liveness, weight: Int) extends Animal {
     def runOver() = Dillo(Liveness.Dead, this.weight)
