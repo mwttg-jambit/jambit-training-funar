@@ -70,4 +70,5 @@ object Intro {
       case parrot: Parrot => parrot.copy(sentence = "")
     }
 
+  val highway: List[Animal] = d1 :: (d2 :: (parrot1 :: (parrot2 :: Nil)))
 }
