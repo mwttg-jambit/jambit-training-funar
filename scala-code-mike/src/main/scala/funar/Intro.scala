@@ -91,8 +91,16 @@ object Intro {
   //        runOverAnimal(first) :: runOverAnimals(rest)
   //   }
 
-  def runOverAnimals(animals: List[Animal]): List[Animal] =
-    runOverAnimals1(animals, Nil)
+  def runOverAnimals(animals: List[Animal]): List[Animal] = {
+    @tailrec
+    def loop(animals: List[Animal], res: List[Animal]): List[Animal] =
+      animals match {
+        case Nil => res.reverse // Konvention in Scale für Funktionen/Methoden ohne Seiteneffekte
+        case first::rest =>
+          loop(rest, runOverAnimal(first) :: res)
+      }
+    loop(animals, Nil)
+  }
 
   // Version mit Akkumulator
   // res: alle Tiere überfahren, die bisher schon gesehen wurden
