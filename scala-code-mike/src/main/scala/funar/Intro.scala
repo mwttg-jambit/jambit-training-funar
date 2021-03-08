@@ -1,5 +1,7 @@
 package funar
 
+import scala.annotation.tailrec
+
 object Intro {
   val s: String = "Mike"
 
@@ -94,6 +96,7 @@ object Intro {
 
   // Version mit Akkumulator
   // res: alle Tiere überfahren, die bisher schon gesehen wurden
+  @tailrec
   def runOverAnimals1(animals: List[Animal], res: List[Animal]): List[Animal] =
     animals match {
       case Nil => res.reverse // Konvention in Scale für Funktionen/Methoden ohne Seiteneffekte
