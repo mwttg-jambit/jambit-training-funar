@@ -71,4 +71,5 @@ object Intro {
     }
 
   val highway: List[Animal] = d1 :: (d2 :: (parrot1 :: (parrot2 :: Nil)))
+  val animals = List(d1, parrot1)
 }
