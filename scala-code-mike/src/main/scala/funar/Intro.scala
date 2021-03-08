@@ -80,13 +80,16 @@ object Intro {
   // Ein nicht-tail-call / Aufruf mit Kontext benötigt Speicherplatz zur Laufzeit
   // für Aktivierungsrecord / Frame
   // JVM: Stack fester Größe, klein im Verhältnis zum Gesamtspeicher
-  def runOverAnimals(animals: List[Animal]): List[Animal] =
-    animals match {
-      case Nil => Nil
-      case first::rest =>
-         runOverAnimal(first) :: runOverAnimals(rest)
-    }
+  // def runOverAnimals(animals: List[Animal]): List[Animal] =
+  //   animals match {
+  //     case Nil => Nil
+  //     case first::rest =>
+  //        runOverAnimal(first) :: runOverAnimals(rest)
+  //   }
 
+  def runOverAnimals(animals: List[Animal]): List[Animal] =
+    runOverAnimals1(animals, Nil)
+    
   // Version mit Akkumulator
   // res: alle Tiere überfahren, die bisher schon gesehen wurden
   def runOverAnimals1(animals: List[Animal], res: List[Animal]): List[Animal] =
