@@ -19,7 +19,7 @@ Zero-Bond
 
 import Contract.Amount
 
-case class ZeroCouponBond(amount: Amount)
+case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date)
 
 object Contract {
    type Amount = Double
