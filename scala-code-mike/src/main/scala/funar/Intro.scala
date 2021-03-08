@@ -26,5 +26,9 @@ object Intro {
       case Snake => false
     }
     
+  sealed trait Liveness
+  case object Dead extends Liveness
+  case object Alive extends Liveness
+  
   case class Dillo(liveness: Liveness, weight: Int)
 }
