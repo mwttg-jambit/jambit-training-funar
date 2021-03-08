@@ -15,4 +15,12 @@ object Intro {
 
   val p1: Pet = Cat
   val p2 = Dog
+
+  // Ist ein Haustier niedlich?
+  def isCute(pet: Pet): Boolean =
+    pet match {
+      case Cat => ???
+      case Dog => ???
+      case Snake => ???
+    }
 }
