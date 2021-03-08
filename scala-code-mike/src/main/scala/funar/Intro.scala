@@ -130,6 +130,7 @@ object Intro {
   val ex2 = dillos.filter({dillo => dillo.liveness == Liveness.Alive} )
   // geschweifte Klammern weglassen
   val ex2_1 = dillos.filter( dillo => dillo.liveness == Liveness.Alive )
-  // runde Klammern weglassen
+  // runde Klammern weglassen - wenn Funktion oder Methode nur ein Argument
   val ex2_2 = dillos.filter { dillo => dillo.liveness == Liveness.Alive }
+  val ex2_3 = dillos.filter( _.liveness == Liveness.Alive )
 }
