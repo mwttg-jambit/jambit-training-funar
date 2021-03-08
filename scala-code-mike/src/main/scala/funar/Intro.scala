@@ -70,6 +70,17 @@ object Intro {
       case parrot: Parrot => parrot.copy(sentence = "")
     }
 
+  // Eine Liste ist eins der folgenden:
+  // - die leere Liste - Nil
+  // - die Cons-Liste aus erstem Element und Rest, Konstruktor ::
+
   val highway: List[Animal] = d1 :: (d2 :: (parrot1 :: (parrot2 :: Nil)))
   val animals = List(d1, parrot1)
+
+  def runOverAnimals(animals: List[Animal]): List[Animal] =
+    animals match {
+      case Nil => Nil
+      case first::rest =>
+         runOverAnimal(first) ::  runOverAnimals(rest)
+    }
 }
