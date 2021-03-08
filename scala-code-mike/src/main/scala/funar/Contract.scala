@@ -92,6 +92,7 @@ object Contract {
    case class ContractInProgress(contract: Contract, payment: Seq[Payment])
 
    // Zahlungen bis now
-   def semantics(contract: ContractInProgress, now: Date): (Seq[Payment], ContractInProgress)
+   def semantics(contract: ContractInProgress, now: Date): (Seq[Payment], ContractInProgress) =
+    ???
 
 }
