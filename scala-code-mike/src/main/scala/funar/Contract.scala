@@ -3,18 +3,25 @@ package funar
 /*
 Methode:
 1. einfache Beispiele für Domänenobjekte einholen
-2. die modellieren
+2. die modellieren -> möglicherweise Sackgasse
+3. einfachen Beispiele in "atomare" Bestandteile zerlegen
 */
 
 /*
 Einfacher Vertrag:
 
-Bekomme 100Pfund am 29.1.2001
+Bekomme 100 Pfund am 29.1.2001
 
-Bekomme 200EUR am 31.12.2021
+Bekomme 200 EUR am 31.12.2021
 
 Zero-Coupon Bond
 Zero-Bond
+
+3 Ideen:
+- "später"
+- "Währung"
+- "Betrag"
+
 */
 
 import Contract.Amount
@@ -27,7 +34,14 @@ object Currency {
 
 case class Date(desc: String)
 
-case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date)
+sealed trait Contract
+/*
+case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date) extends Contract
+case class Everest()
+case class Call()
+case class Put()
+case class Annapurna()
+*/
 
 object Contract {
    type Amount = Double
