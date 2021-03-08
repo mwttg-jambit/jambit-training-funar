@@ -127,5 +127,5 @@ object Intro {
   
   val dillos: List[Dillo] = List(d1, d2)
   // Hinweis: == ruft equals-Methode auf
-  val ex2 = dillos.filter( dillo => dillo.liveness == Liveness.Alive )
+  val ex2 = dillos.filter({dillo => dillo.liveness == Liveness.Alive} )
 }
