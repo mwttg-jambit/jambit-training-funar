@@ -52,6 +52,7 @@ case class Multiple(amount: Amount, contract: Contract) extends Contract
 case class Later(date: Date, contract: Contract) extends Contract
 // "dreht den Vertrag um"
 case class Pay(contract: Contract) extends Contract
+case class Both(contract1: Contract, contract2: Contract) extends Contract
 
 object Contract {
    type Amount = Double
@@ -65,8 +66,8 @@ object Contract {
 
    def zeroCouponBond(amount: Amount, currency: Currency, date: Date): Contract =
     Later(date, Multiple(amount, One(currency)))
-    
-   val zcb1 = zeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
+
+   val zcb3 = zeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 
    // Pay(Pay(c)) ~~~ c
    val contract3 = Pay(Later(Date("2002-02-01"), Multiple(100, One(Currency.GBP))))
