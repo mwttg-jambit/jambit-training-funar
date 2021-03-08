@@ -148,4 +148,6 @@ object Intro {
       case first::rest =>
         forCons(first, foldRight(forNil, forCons, rest))
     }
+
+  val ex4 = foldRight(0, (a, b) => a+b, list1)
 }
