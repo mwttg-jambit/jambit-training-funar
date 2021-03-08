@@ -45,7 +45,7 @@ object Rank {
 // - Factory-Methode Card.apply
 case class Card(suit: Suit, rank : Rank) {
   // Ist diese Karte höherwertig als andere Karte gleicher Farbe
-  def beats(other: Card): Option[Boolean] =
+  def beats(other: Card): Option[Boolean] =  // wie Maybe in Haskell
     if (this.suit == other.suit)
       Some(this.rank > other.rank) // dank Ordering
     else
