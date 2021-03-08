@@ -58,6 +58,8 @@ case class Pay(contract: Contract) extends Contract
 case class Both(contract1: Contract, contract2: Contract) extends Contract
 case object Zero extends Contract
 
+case class ContractInProgram(contract: Contract, payment: Seq[Payment])
+
 object Contract {
    type Amount = Double
 
@@ -78,4 +80,17 @@ object Contract {
 
    // D1 aus dem Paper
    val d1 = Both(zcb1, contract3)
+
+   sealed trait Direction
+   case object Long extends Direction
+   case object Short extends Direction
+
+   case class Payment(direction: Direction, date: Date, amount: Amount, currency: Currency)
+   
+   // operationelle Semantik: zeitliche Entwicklung der Domänenobjekte
+   // (vs. denotationalle Semantik: Domänenobjekt auf mathematisches Objekt abbilden)
+
+   // Zahlungen bis now
+   def semantics(contract: Contract, now: Date): Seq[Payment]
+
 }
