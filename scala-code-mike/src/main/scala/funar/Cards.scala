@@ -11,7 +11,7 @@ object Suit {
 }
 
 // total geordnet
-sealed trait Rank { // Alternative abstract class Rank(value: Int)
+sealed trait Rank extends Ordered[Rank] { // Alternative abstract class Rank(value: Int)
   val value: Int
 } 
 object Rank {
