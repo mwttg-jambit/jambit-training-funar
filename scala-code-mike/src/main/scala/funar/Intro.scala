@@ -112,15 +112,15 @@ object Intro {
         runOverAnimals1(rest, runOverAnimal(first) :: res)
     }
 
-  def map[A](f: A => A, animals: List[A]): List[A] = {
+  def map[A](f: A => A, list: List[A]): List[A] = {
     @tailrec
-    def loop(animals: List[A], res: List[A]): List[A] =
-      animals match {
+    def loop(list: List[A], res: List[A]): List[A] =
+      list match {
         case Nil => res.reverse // Konvention in Scale für Funktionen/Methoden ohne Seiteneffekte
         case first::rest =>
           loop(rest, f(first) :: res)
       }
-    loop(animals, Nil)
+    loop(list, Nil)
   }
   
 }
