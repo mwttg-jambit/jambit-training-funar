@@ -144,9 +144,8 @@ object Intro {
 
   def foldRight[A, B](forNil: B, forCons: (A, B) => B, list: List[A]): B =
     list match {
-      case Nil => ???
+      case Nil => forNil
       case first::rest =>
-        first
-        foldRight(forNil, forCons rest)
+        forCns(first, foldRight(forNil, forCons rest))
     }
 }
