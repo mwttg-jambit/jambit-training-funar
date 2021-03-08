@@ -150,4 +150,5 @@ object Intro {
     }
 
   val ex4 = foldRight(0, (a: Int, b: Int) => a+b, list1)
+  val ex5 = foldRight[Int, In](0, (a, b) => a + b, list1)
 }
