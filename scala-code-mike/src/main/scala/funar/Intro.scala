@@ -27,8 +27,10 @@ object Intro {
     }
     
   sealed trait Liveness
-  case object Dead extends Liveness
-  case object Alive extends Liveness
+  object Liveness {
+    case object Dead extends Liveness
+    case object Alive extends Liveness
+  }
 
   // "value class / value objects"
   case class Dillo(liveness: Liveness, weight: Int)
