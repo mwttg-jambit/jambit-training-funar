@@ -38,7 +38,19 @@ object Rank {
                            Jack, Queen, King, Ace)
 }
 
-case class Card(suit: Suit, rank : Rank)
+// "case"
+// - mit match verwendbar
+// - Standard-Konstruktor
+// - Standard-Implementierungen für equals, hashCode, toString
+// - Factory-Methode Card.apply
+case class Card(suit: Suit, rank : Rank) {
+  // Ist diese Karte höherwertig als andere Karte gleicher Farbe
+  def beats(other: Card): Option[Boolean] =
+    if (this.suit == other.suit)
+      this.rank > other.rank // dank Ordering
+    else
+      None
+}
 
 object Card {
   def cartesianProduct[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = // Seq von 2-Tupeln aus jeweils A und B
