@@ -16,7 +16,7 @@ sealed abstract class Rank /* extends Ordered[Rank] */ {
   val value: Int
 
   // Ordered
-  override def compare(other: Rank): Int =
+  def compare(other: Rank): Int =
     this.value - other.value
 } 
 object Rank {
