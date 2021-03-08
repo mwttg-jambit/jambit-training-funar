@@ -7,6 +7,12 @@
 #;(check-expect (rev (list 1 2 3))
               (list 3 2 1))
 
+(check-property
+ (for-all ((a (list-of string))
+           (b (list-of string)))
+   (expect (rev (concat a b))
+           (concat (rev b) (rev a)))))
+
 (define rev
   (lambda (list)
     (cond
@@ -17,6 +23,20 @@
 
 ; n + (n-1) + (n-2) + ... + 1 Aufrufe, wenn n Listenlänge
 ; n * (n + 1) / 2 = n^2 + ...
+
+(: concat ((list-of %element) (list-of %element) -> (list-of %element)))
+
+(check-property
+ (for-all ((a (list-of string))
+           (b (list-of string))
+           (c (list-of string)))
+   (expect (concat a (concat b c))
+           (concat (concat a b) c))))
+
+(check-property
+ (for-all ((a (list-of string)))
+   (expect (concat a empty)
+           a)))
 
 (define concat
   (lambda (list1 list2)
@@ -57,7 +77,7 @@
 
 (define extract-evens
   (lambda (list0)
-    (extract-evens* list0 empty)))
+    (rev (extract-evens* list0 empty))))
 
 (define extract-evens*
   (lambda (list res)
