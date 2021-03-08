@@ -16,6 +16,8 @@ Bekomme 100 Pfund am 29.1.2001
 
 Bekomme 200 EUR am 31.12.2021
 
+Bezahle 100 Pfund am 1.2.2002
+
 Zero-Coupon Bond
 Zero-Bond
 
@@ -48,6 +50,8 @@ case class One(currency: Currency) extends Contract // "Bekomme jetzt 1EUR"
 //case class Multiple(amount: Amount, currency: Currency) extends Contract
 case class Multiple(amount: Amount, contract: Contract) extends Contract
 case class Later(date: Date, contract: Contract) extends Contract
+// "dreht den Vertrag um"
+case class Pay(contract: Contract) extends Contract
 
 object Contract {
    type Amount = Double
@@ -58,5 +62,12 @@ object Contract {
    // Es gelten Gleichungen, z.B. zcb1 ~~~ zcb2
    val zcb1 = Later(Date("2001-01-29"), Multiple(100, One(Currency.GBP)))
    val zcb2 = Multiple(100, Later(Date("2001-01-29"), One(Currency.GBP)))
-   // val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
+
+   def zeroCouponBond(amount: Amount, currency: Currency, date: Date): Contract =
+    Later(date, Multiple(amount, One(currency)))
+    
+   val zcb1 = zeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
+
+   // Pay(Pay(c)) ~~~ c
+   val contract3 = Pay(Later(Date("2002-02-01"), Multiple(100, One(Currency.GBP))))
 }
