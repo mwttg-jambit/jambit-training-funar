@@ -33,8 +33,9 @@ object Intro {
   }
 
   // "value class / value objects"
-  case class Dillo(liveness: Liveness, weight: Int)
-  case class Parrot(sentence: String, weight: Int)
+  sealed trait Animal
+  case class Dillo(liveness: Liveness, weight: Int) extends Animal
+  case class Parrot(sentence: String, weight: Int) extends Animal
 
   val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
   val d2 = Dillo(Liveness.Dead, 12)
