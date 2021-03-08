@@ -89,12 +89,12 @@ object Intro {
 
   def runOverAnimals(animals: List[Animal]): List[Animal] =
     runOverAnimals1(animals, Nil)
-    
+
   // Version mit Akkumulator
   // res: alle Tiere überfahren, die bisher schon gesehen wurden
   def runOverAnimals1(animals: List[Animal], res: List[Animal]): List[Animal] =
     animals match {
-      case Nil => res
+      case Nil => res.reverse
       case first::rest =>
         runOverAnimals1(rest, runOverAnimal(first) :: res)
     }
