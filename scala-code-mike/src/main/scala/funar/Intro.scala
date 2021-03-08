@@ -35,7 +35,11 @@ object Intro {
   // "value class / value objects"
   case class Dillo(liveness: Liveness, weight: Int)
 
-  val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
+  val d1 = new Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
   val d2 = Dillo(Liveness.Dead, 12)
+
+  // Gürteltier überfahren
+  def runOverDillo(dillo: Dillo): Dillo =
+    Dillo(Liveness.Dead, dillo.weight)
 
 }
