@@ -77,10 +77,22 @@ object Intro {
   val highway: List[Animal] = d1 :: (d2 :: (parrot1 :: (parrot2 :: Nil)))
   val animals = List(d1, parrot1)
 
+  // Ein nicht-tail-call / Aufruf mit Kontext benötigt Speicherplatz zur Laufzeit
+  // für Aktivierungsrecord / Frame
+  // JVM: Stack fester Größe, klein im Verhältnis zum Gesamtspeicher
   def runOverAnimals(animals: List[Animal]): List[Animal] =
     animals match {
       case Nil => Nil
       case first::rest =>
-         runOverAnimal(first) ::  runOverAnimals(rest)
+         runOverAnimal(first) :: runOverAnimals(rest)
+    }
+
+  // Version mit Akkumulator
+  // res: alle Tiere überfahren, die bisher schon gesehen wurden
+  def runOverAnimals1(animals: List[Animal], res: List[Animal]): List[Animal] =
+    animals match {
+      case Nil => res
+      case first::rest =>
+        runOverAnimls(rest, runOverAnimal(first) :: res)
     }
 }
