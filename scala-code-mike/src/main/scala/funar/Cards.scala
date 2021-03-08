@@ -11,11 +11,11 @@ object Suit {
 }
 
 // total geordnet
-sealed trait Rank {
+sealed trait Rank { // Alternative abstract class Rank(value: Int)
   val value: Int
 } 
 object Rank {
-  case object Two extends Rank
+  case object Two extends Rank { value = 2 }
   case object Three extends Rank
   case object Four extends Rank
   case object Five extends Rank
