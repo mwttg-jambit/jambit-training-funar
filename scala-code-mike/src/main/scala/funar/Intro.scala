@@ -139,6 +139,6 @@ object Intro {
   val list1: List[Int] = List(1,2,3)
   val list2: List[Animal] = List(d1, parrot1)
 
-  val ex3 = list1.foldRight(0)( (a, b) => a + b)
+  val ex3 = list1.foldRight(0)((a, b) => a + b)
 
 }
