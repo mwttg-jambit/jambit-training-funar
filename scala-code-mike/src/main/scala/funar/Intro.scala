@@ -132,5 +132,9 @@ object Intro {
   val ex2_1 = dillos.filter( dillo => dillo.liveness == Liveness.Alive )
   // runde Klammern weglassen - wenn Funktion oder Methode nur ein Argument
   val ex2_2 = dillos.filter { dillo => dillo.liveness == Liveness.Alive }
+  // implizit Funktion mit einem Parameter namens _
+  // (geht auch mit mehreren Parameter, heißen alle _)
   val ex2_3 = dillos.filter( _.liveness == Liveness.Alive )
+
+  
 }
