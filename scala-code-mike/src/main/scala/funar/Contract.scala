@@ -5,6 +5,7 @@ Methode:
 1. einfache Beispiele für Domänenobjekte einholen
 2. die modellieren -> möglicherweise Sackgasse
 3. einfachen Beispiele in "atomare" Bestandteile zerlegen
+4. nach Selbstreferenzen suchen
 */
 
 /*
@@ -42,9 +43,15 @@ case class Call()
 case class Put()
 case class Annapurna()
 */
+case class One(currency: Currency) extends Contract // "Bekomme jetzt 1EUR"
+//case class Multiple(amount: Amount, currency: Currency) extends Contract
+case class Multiple(amount: Amount, contract: Contract) extends Contract
 
 object Contract {
    type Amount = Double
+
+   // bekomme 100 EUR jetzt
+   val contract1 = Multiple(100, One(Currency.EUR))
 
    // val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 }
