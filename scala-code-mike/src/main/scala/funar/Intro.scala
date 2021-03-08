@@ -112,7 +112,7 @@ object Intro {
         runOverAnimals1(rest, runOverAnimal(first) :: res)
     }
 
-  def map(f: A => A, animals: List[A]): List[A] = {
+  def map[A](f: A => A, animals: List[A]): List[A] = {
     @tailrec
     def loop(animals: List[A], res: List[A]): List[A] =
       animals match {
