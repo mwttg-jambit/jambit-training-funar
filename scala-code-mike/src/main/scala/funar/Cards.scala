@@ -34,6 +34,8 @@ object Rank {
   case object King extends Rank { val value = 13 }
   case object Ace extends Rank { val value = 14 }
 
+  val heartsOrdering: Ordering[Rank] = Ordering.by(_.value)
+
   val all: Seq[Rank] = Seq(Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, 
                            Jack, Queen, King, Ace)
 }
