@@ -12,11 +12,11 @@ object Suit {
 
 // total geordnet
 //sealed trait Rank extends Ordered[Rank] { // Alternative abstract class Rank(value: Int)
-sealed abstract class Rank /* extends Ordered[Rank] */ {
+sealed abstract class Rank extends Ordered[Rank] {
   val value: Int
 
   // Ordered
-  def compare(other: Rank): Int =
+  override def compare(other: Rank): Int =
     this.value - other.value
 } 
 object Rank {
@@ -54,7 +54,7 @@ object Rank {
 // - Standard-Implementierungen für equals, hashCode, toString
 // - Factory-Methode Card.apply
 
-case class Card(suit: Suit, rank : Rank) /* {
+case class Card(suit: Suit, rank : Rank) {
   // Ist diese Karte höherwertig als andere Karte gleicher Farbe
   def beats(other: Card): Option[Boolean] =  // wie Maybe in Haskell
     if (this.suit == other.suit)
@@ -62,7 +62,7 @@ case class Card(suit: Suit, rank : Rank) /* {
     else
       None
 }
-*/
+
 
 object Card {
   def cartesianProduct[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = // Seq von 2-Tupeln aus jeweils A und B
