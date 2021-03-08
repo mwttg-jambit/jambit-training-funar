@@ -56,7 +56,7 @@ case class Later(date: Date, contract: Contract) extends Contract
 case class Pay(contract: Contract) extends Contract
 // binärer Operator, +, *, beside, overlay
 case class Both(contract1: Contract, contract2: Contract) extends Contract
-case object Zero
+case object Zero extends Contract
 
 object Contract {
    type Amount = Double
