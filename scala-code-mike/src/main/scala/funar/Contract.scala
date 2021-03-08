@@ -46,5 +46,5 @@ case class Annapurna()
 object Contract {
    type Amount = Double
 
-   val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
+   // val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 }
