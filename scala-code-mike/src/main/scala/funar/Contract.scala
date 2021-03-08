@@ -31,4 +31,6 @@ case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date)
 
 object Contract {
    type Amount = Double
+
+   val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 }
