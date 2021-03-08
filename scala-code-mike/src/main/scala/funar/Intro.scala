@@ -116,11 +116,15 @@ object Intro {
     @tailrec
     def loop(list: List[A], res: List[A]): List[A] =
       list match {
-        case Nil => res.reverse // Konvention in Scale für Funktionen/Methoden ohne Seiteneffekte
+        case Nil => res.reverse // Konvention in Scala für Funktionen/Methoden ohne Seiteneffekte
         case first::rest =>
           loop(rest, f(first) :: res)
       }
     loop(list, Nil)
   }
   
+  val ex1 = highway.map(runOverAnimal)
+  
+  val dillos: List[Dillo] = List(d1, d2)
+  val ex2 = dillos.filter( (dillo: Dillo) => dillo.liveness == Liveness.Alive )
 }
