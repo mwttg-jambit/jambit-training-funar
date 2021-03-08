@@ -45,6 +45,6 @@ object Card {
 //    }
 //    cartesianProduct(Suit.all, Rank.all).map { pair => Card(pair._1, pair._2)}
 
-  def deck: Seq[Card] = genCartesianProduct(Card(_, _), Suit.all, Rank.all)
+  def deck: Seq[Card] = genCartesianProduct(Card_, Suit.all, Rank.all)
 
 }
