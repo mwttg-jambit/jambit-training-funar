@@ -128,4 +128,8 @@ object Intro {
   val dillos: List[Dillo] = List(d1, d2)
   // Hinweis: == ruft equals-Methode auf
   val ex2 = dillos.filter({dillo => dillo.liveness == Liveness.Alive} )
+  // geschweifte Klammern weglassen
+  val ex2_1 = dillos.filter( dillo => dillo.liveness == Liveness.Alive )
+  // runde Klammern weglassen
+  val ex2_2 = dillos.filter { dillo => dillo.liveness == Liveness.Alive }
 }
