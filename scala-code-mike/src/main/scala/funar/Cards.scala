@@ -34,7 +34,12 @@ case class Card(suit: Suit, rank : Rank)
 
 object Card {
   def cartesianProduct[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = // Seq von 2-Tupeln aus jeweils A und B
-    as.map { a => bs.map { b => (a, b)}}.flatten
-  def deck: Seq[Card] = ???
+    as.map { a => bs.map { b => (a, b)}}.flatten // Seq[Seq[X]] => Seq[X]
+  def deck: Seq[Card] =
+    cartesianProduct(Suit.all, Rank.all).map { pair =>
+      pair match {
+        case (suit, rank) => Card(suit, rank)
+      }
+    }
 
 }
