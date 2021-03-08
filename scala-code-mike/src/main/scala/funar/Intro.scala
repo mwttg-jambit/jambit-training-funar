@@ -136,5 +136,7 @@ object Intro {
   // (geht auch mit mehreren Parameter, heißen alle _)
   val ex2_3 = dillos.filter( _.liveness == Liveness.Alive )
 
-  
+  val list1: List[Int] = List(1,2,3)
+  val list2 = List(d1, parrot1)
+
 }
