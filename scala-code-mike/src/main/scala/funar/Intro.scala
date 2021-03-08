@@ -39,6 +39,8 @@ object Intro {
 
   val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
   val d2 = Dillo(Liveness.Dead, 12)
+  val p1 = Parrot("Hello", 1)
+  val p2 = Parrot("Goodbye", 2)
 
   // Gürteltier überfahren
   def runOverDillo(dillo: Dillo): Dillo =
@@ -46,6 +48,13 @@ object Intro {
     // dillo.copy(liveness = Liveness.Dead)
     dillo match {
       case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
+    }
+
+  // Tier überfahren
+  def runOverAnimal(animal: Animal): Animal =
+    animal match {
+      case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
+      case Parrot(sentence, weight) => Parrot("", weight)
     }
 
 }
