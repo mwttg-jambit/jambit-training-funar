@@ -34,7 +34,7 @@ case class Card(suit: Suit, rank : Rank)
 
 object Card {
   def cartesianProduct[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = // Seq von 2-Tupeln aus jeweils A und B
-
+    ???
   def deck: Seq[Card] = ???
 
 }
