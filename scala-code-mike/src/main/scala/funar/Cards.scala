@@ -47,7 +47,7 @@ case class Card(suit: Suit, rank : Rank) {
   // Ist diese Karte höherwertig als andere Karte gleicher Farbe
   def beats(other: Card): Option[Boolean] =
     if (this.suit == other.suit)
-      this.rank > other.rank // dank Ordering
+      Some(this.rank > other.rank) // dank Ordering
     else
       None
 }
