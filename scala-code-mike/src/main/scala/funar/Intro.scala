@@ -66,7 +66,8 @@ object Intro {
   def runOverAnimal(animal: Animal): Animal =
     animal match {
       case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
-      case Parrot(sentence, weight) => animal.copy(sentence = "")  // Parrot("", weight)
+      // case Parrot(sentence, weight) => Parrot("", weight)
+      case parrot: Parrot => parrot.copy(sentence = "")
     }
 
 }
