@@ -17,6 +17,10 @@ Zero-Coupon Bond
 Zero-Bond
 */
 
-type Amount = Double
+import Contract.Amount
 
 case class ZeroCouponBond(amount: Amount)
+
+object Contract {
+   type Amount = Double
+}
