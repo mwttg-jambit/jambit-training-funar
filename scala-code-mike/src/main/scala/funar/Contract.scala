@@ -46,6 +46,7 @@ case class Annapurna()
 case class One(currency: Currency) extends Contract // "Bekomme jetzt 1EUR"
 //case class Multiple(amount: Amount, currency: Currency) extends Contract
 case class Multiple(amount: Amount, contract: Contract) extends Contract
+case class Later(date: Date, contract: Contract) extends Contract
 
 object Contract {
    type Amount = Double
@@ -53,5 +54,6 @@ object Contract {
    // bekomme 100 EUR jetzt
    val contract1 = Multiple(100, One(Currency.EUR))
 
+   val zcb1 = Later(Date("2001-01-29"), Multiple(100, One(Currency.GBP))
    // val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 }
