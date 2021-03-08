@@ -19,6 +19,12 @@ Zero-Bond
 
 import Contract.Amount
 
+sealed trait Currency
+object Currency {
+  case object EUR extends Currency
+  case object GBP extends Currency
+}
+
 case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date)
 
 object Contract {
