@@ -19,8 +19,8 @@ object Intro {
   // Ist ein Haustier niedlich?
   def isCute(pet: Pet): Boolean =
     pet match {
-      case Cat => ???
-      case Dog => ???
-      case Snake => ???
+      case Cat => true
+      case Dog => true
+      case Snake => false
     }
 }
