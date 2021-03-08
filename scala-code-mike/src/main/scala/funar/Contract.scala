@@ -80,6 +80,8 @@ object Contract {
    // D1 aus dem Paper
    val d1 = Both(zcb1, contract3)
 
+   val contract4 = Multiple(100, Zero)
+
    sealed trait Direction
    case object Long extends Direction
    case object Short extends Direction
