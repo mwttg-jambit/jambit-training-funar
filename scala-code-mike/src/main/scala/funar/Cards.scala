@@ -36,14 +36,14 @@ object Rank {
 
   // steht zur Verfügung für implicit-Parameter dieses Typs,
   // wenn es in Scope ist
-  implicit val heartsOrdering: Ordering[Rank] = Ordering.by(- _.value)
+  implicit val heartsOrdering: Ordering[Rank] = Ordering.by(_.value)
 
   val all: Seq[Rank] = Seq(Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, 
                            Jack, Queen, King, Ace)
 
-
   val disordered: Seq[Rank] = Seq(Three, Jack, Six, Nine, Two, Ace)
 
+  // sorted hat implizites Argument vom Typ Ordering[Rank]
   val ordered = disordered.sorted // (heartsOrdering)
 
 }
