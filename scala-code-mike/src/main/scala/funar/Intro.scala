@@ -146,6 +146,6 @@ object Intro {
     list match {
       case Nil => forNil
       case first::rest =>
-        forCons(first, foldRight(forNil, forCons rest))
+        forCons(first, foldRight(forNil, forCons, rest))
     }
 }
