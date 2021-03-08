@@ -4,8 +4,9 @@ package funar
 Methode:
 1. einfache Beispiele für Domänenobjekte einholen
 2. die modellieren -> möglicherweise Sackgasse
-3. einfachen Beispiele in "atomare" Bestandteile zerlegen
+3. einfache Beispiele in "atomare" Bestandteile zerlegen
 4. nach Selbstreferenzen suchen
+5. ggf. mit weiteren Beispiel wiederholen
 */
 
 /*
@@ -54,6 +55,8 @@ object Contract {
    // bekomme 100 EUR jetzt
    val contract1 = Multiple(100, One(Currency.EUR))
 
-   val zcb1 = Later(Date("2001-01-29"), Multiple(100, One(Currency.GBP))
+   // Es gelten Gleichungen, z.B. zcb1 ~~~ zcb2
+   val zcb1 = Later(Date("2001-01-29"), Multiple(100, One(Currency.GBP)))
+   val zcb2 = Multiple(100, Later(Date("2001-01-29"), One(Currency.GBP)))
    // val zcb1 = ZeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 }
