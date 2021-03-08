@@ -35,6 +35,10 @@ case class Card(suit: Suit, rank : Rank)
 object Card {
   def cartesianProduct[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = // Seq von 2-Tupeln aus jeweils A und B
     as.map { a => bs.map { b => (a, b)}}.flatten // Seq[Seq[X]] => Seq[X]
+
+  def genCartesianProduct[A, B, C](f: (A, B) => C, as: Seq[A], bs: Seq[B]): Seq[C] = // Seq von 2-Tupeln aus jeweils A und B
+    as.map { a => bs.map { b => f(a, b)}}.flatten // Seq[Seq[X]] => Seq[X]
+
   def deck: Seq[Card] =
 //    cartesianProduct(Suit.all, Rank.all).map { // 1stellige Funktion, deren Rumpf aus Pattern-Matching besteht
 //        case (suit, rank) => Card(suit, rank)
