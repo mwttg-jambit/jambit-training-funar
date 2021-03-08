@@ -142,10 +142,11 @@ object Intro {
 
   val ex3 = list1.foldRight(0)((a, b) => a + b)
 
-  def foldRight(forNil: B, forCons: (A, B) => B, list: List[A]): B =
+  def foldRight[A, B](forNil: B, forCons: (A, B) => B, list: List[A]): B =
     list match {
       case Nil => ???
       case first::rest =>
         first
+        foldRight(forNil, forCons rest)
     }
 }
