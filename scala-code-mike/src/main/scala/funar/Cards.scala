@@ -13,6 +13,10 @@ object Suit {
 // total geordnet
 sealed trait Rank extends Ordered[Rank] { // Alternative abstract class Rank(value: Int)
   val value: Int
+
+  // Ordered
+  override def compare(other: Rank): Int =
+    this.value - other.value
 } 
 object Rank {
   case object Two extends Rank { val value = 2 }
