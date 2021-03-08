@@ -126,5 +126,6 @@ object Intro {
   val ex1 = highway.map(runOverAnimal)
   
   val dillos: List[Dillo] = List(d1, d2)
-  val ex2 = dillos.filter( (dillo: Dillo) => dillo.liveness == Liveness.Alive )
+  // Hinweis: == ruft equals-Methode auf
+  val ex2 = dillos.filter( dillo => dillo.liveness == Liveness.Alive )
 }
