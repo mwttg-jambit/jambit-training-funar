@@ -39,8 +39,8 @@ object Intro {
 
   val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
   val d2 = Dillo(Liveness.Dead, 12)
-  val p1 = Parrot("Hello", 1)
-  val p2 = Parrot("Goodbye", 2)
+  val parrot1 = Parrot("Hello", 1)
+  val parrot2 = Parrot("Goodbye", 2)
 
   // Gürteltier überfahren
   def runOverDillo(dillo: Dillo): Dillo =
