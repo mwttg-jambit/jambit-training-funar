@@ -80,6 +80,8 @@ object Intro {
   // Ein nicht-tail-call / Aufruf mit Kontext benötigt Speicherplatz zur Laufzeit
   // für Aktivierungsrecord / Frame
   // JVM: Stack fester Größe, klein im Verhältnis zum Gesamtspeicher
+  // JVM: auch Tail-Calls verbrauchen Platz auf dem Stack
+
   // def runOverAnimals(animals: List[Animal]): List[Animal] =
   //   animals match {
   //     case Nil => Nil
