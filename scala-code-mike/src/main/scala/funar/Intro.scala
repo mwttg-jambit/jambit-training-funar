@@ -149,5 +149,5 @@ object Intro {
         forCons(first, foldRight(forNil, forCons, rest))
     }
 
-  val ex4 = foldRight(0, (a, b) => a+b, list1)
+  val ex4 = foldRight(0, (a: Int, b: Int) => a+b, list1)
 }
