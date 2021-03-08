@@ -39,7 +39,9 @@ object Intro {
   case class Dillo(liveness: Liveness, weight: Int) extends Animal {
     def runOver() = Dillo(Liveness.Dead, this.weight)
   }
-  case class Parrot(sentence: String, weight: Int) extends Animal
+  case class Parrot(sentence: String, weight: Int) extends Animal {
+    def runOver() = Parrot("", this.weight)
+  }
 
   val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
   val d2 = Dillo(Liveness.Dead, 12)
