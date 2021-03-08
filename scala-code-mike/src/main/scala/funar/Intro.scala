@@ -24,6 +24,7 @@ object Intro {
       case Cat => true
       case Dog => true
       case Snake => false
+    }
     
   case class Dillo(liveness: Liveness, weight: Int)
 }
