@@ -41,6 +41,9 @@ object Intro {
   // Gürteltier überfahren
   def runOverDillo(dillo: Dillo): Dillo =
     // Dillo(Liveness.Dead, dillo.weight)
-    dillo.copy(weight = dillo.weight)
+    // dillo.copy(liveness = Liveness.Dead)
+    dillo match {
+      case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
+    }
 
 }
