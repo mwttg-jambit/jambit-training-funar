@@ -36,4 +36,6 @@ object Intro {
   case class Dillo(liveness: Liveness, weight: Int)
 
   val d1 = Dillo(Liveness.Alive, 10) // Gürteltier, lebendig, 10 kg
+  val d2 = Dillo(Liveness.Dead, 12)
+
 }
