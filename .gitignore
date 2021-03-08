@@ -24,3 +24,8 @@ handout/Haskell-CheatSheet/cheatsheet.pdf
 **/compiled/
 
 **/.cabal
+
+**/.bloop
+**/.metals
+**/.bsp
+**/.vscode
