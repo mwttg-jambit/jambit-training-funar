@@ -36,9 +36,9 @@ object Intro {
 
   // "value class / value objects"
   sealed trait Animal {
-    def runOver(): Animal
+    def runOver: Animal
 
-    def runOver2(): Animal =
+    def runOver2: Animal =
       this match {
         case Dillo(liveness, weight) => Dillo(Liveness.Dead, weight)
         case Parrot(sentence, weight) => Parrot("", weight)
@@ -95,7 +95,8 @@ object Intro {
     @tailrec
     def loop(animals: List[Animal], res: List[Animal]): List[Animal] =
       animals match {
-        case Nil => res.reverse // Konvention in Scale für Funktionen/Methoden ohne Seiteneffekte
+        // reverse hat keine Klammern
+        case Nil => res.reverse // Konvention in Scala für Funktionen/Methoden ohne Seiteneffekte
         case first::rest =>
           loop(rest, runOverAnimal(first) :: res)
       }
