@@ -137,6 +137,8 @@ object Intro {
   val ex2_3 = dillos.filter( _.liveness == Liveness.Alive )
 
   val list1: List[Int] = List(1,2,3)
-  val list2 = List(d1, parrot1)
+  val list2: List[Animal] = List(d1, parrot1)
+
+  val ex3 = list1.foldRight(0)( (a, b) => a + b)
 
 }
