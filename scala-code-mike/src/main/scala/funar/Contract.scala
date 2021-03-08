@@ -7,6 +7,8 @@ Methode:
 3. einfache Beispiele in "atomare" Bestandteile zerlegen
 4. nach Selbstreferenzen suchen
 5. ggf. mit weiteren Beispiel wiederholen
+6. nach binärem Operator suchen
+7. wenn 6 erfolgreich: neutrales Element
 */
 
 /*
@@ -52,7 +54,9 @@ case class Multiple(amount: Amount, contract: Contract) extends Contract
 case class Later(date: Date, contract: Contract) extends Contract
 // "dreht den Vertrag um"
 case class Pay(contract: Contract) extends Contract
+// binärer Operator, +, *, beside, overlay
 case class Both(contract1: Contract, contract2: Contract) extends Contract
+case object Zero
 
 object Contract {
    type Amount = Double
