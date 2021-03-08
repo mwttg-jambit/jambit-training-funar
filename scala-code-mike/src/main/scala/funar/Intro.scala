@@ -35,6 +35,7 @@ object Intro {
   }
 
   // "value class / value objects"
+  // data Animal = Dillo ... | Parrot ...
   sealed trait Animal {
     def runOver: Animal
 
@@ -140,6 +141,8 @@ object Intro {
   val list1: List[Int] = List(1,2,3)
   val list2: List[Animal] = List(d1, parrot1)
 
+  // list1 legt A fest
+  // 0 legt B fest
   val ex3 = list1.foldRight(0)((a, b) => a + b)
 
   def foldRight[A, B](forNil: B, forCons: (A, B) => B, list: List[A]): B =
@@ -151,5 +154,5 @@ object Intro {
 
   val ex4 = foldRight(0, (a: Int, b: Int) => a+b, list1)
   val ex5 = foldRight[Int, Int](0, (a, b) => a + b, list1)
-  val ex6 = foldRight(0, _ + _, list1)
+  val ex6 = foldRight[Int, Int](0, _ + _, list1)
 }
