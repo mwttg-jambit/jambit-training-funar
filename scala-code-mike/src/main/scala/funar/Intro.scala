@@ -93,6 +93,6 @@ object Intro {
     animals match {
       case Nil => res
       case first::rest =>
-        runOverAnimals(rest, runOverAnimal(first) :: res)
+        runOverAnimals1(rest, runOverAnimal(first) :: res)
     }
 }
