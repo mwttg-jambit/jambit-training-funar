@@ -71,4 +71,7 @@ object Contract {
 
    // Pay(Pay(c)) ~~~ c
    val contract3 = Pay(Later(Date("2002-02-01"), Multiple(100, One(Currency.GBP))))
+
+   
+   val contract4 = Both(zcb1, contract3)
 }
