@@ -13,6 +13,8 @@ object Intro {
   case object Dog extends Pet
   case object Snake extends Pet
 
+  // Es gibt "eingebaute" Aufzählungen in Scala
+  // Die sind Mist.
   val p1: Pet = Cat
   val p2 = Dog
 
@@ -22,5 +24,6 @@ object Intro {
       case Cat => true
       case Dog => true
       case Snake => false
-    }
+    
+  case class Dillo(liveness: Liveness, weight: Int)
 }
