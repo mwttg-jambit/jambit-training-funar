@@ -33,7 +33,9 @@ object Intro {
   }
 
   // "value class / value objects"
-  sealed trait Animal
+  sealed trait Animal {
+    def runOver(): Animal
+  }
   case class Dillo(liveness: Liveness, weight: Int) extends Animal
   case class Parrot(sentence: String, weight: Int) extends Animal
 
