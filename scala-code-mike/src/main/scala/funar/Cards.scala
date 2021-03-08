@@ -39,5 +39,5 @@ object Rank {
 case class Card(suit: Suit, rank : Rank)
 
 object Card {
-  
+
 }
