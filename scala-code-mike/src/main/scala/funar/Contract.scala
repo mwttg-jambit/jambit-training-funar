@@ -25,6 +25,8 @@ object Currency {
   case object GBP extends Currency
 }
 
+case class Date(desc: String)
+
 case class ZeroCouponBond(amount: Amount, currency: Currency, date: Date)
 
 object Contract {
