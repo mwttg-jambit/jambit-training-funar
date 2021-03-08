@@ -10,11 +10,7 @@ object Suit {
   val all = Seq(Diamonds, Clubs, Spades, Hearts)
 }
 
-sealed trait Rank extends Ordered[Rank] { 
-  val value : Int
-  def compare(other: Rank) =
-    this.value - other.value
-}
+sealed trait Rank 
 object Rank {
   case object Two extends Rank { val value = 2 }
   case object Three extends Rank { val value = 3 }
