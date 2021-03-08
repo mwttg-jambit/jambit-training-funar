@@ -42,7 +42,7 @@ object Rank {
 
   val disordered = Seq(Three, Jack, Six, Nine, Two, Ace)
 
-  val ordered = disordered.sorted // (heartsOrdering)
+  val ordered = disordered.sorted(heartsOrdering)
 
 }
 
