@@ -10,7 +10,10 @@ object Suit {
   val all = Seq(Diamonds, Clubs, Spades, Hearts)
 }
 
-sealed trait Rank 
+// total geordnet
+sealed trait Rank {
+  val value: Int
+} 
 object Rank {
   case object Two extends Rank
   case object Three extends Rank
@@ -45,6 +48,7 @@ object Card {
 //    }
 //    cartesianProduct(Suit.all, Rank.all).map { pair => Card(pair._1, pair._2)}
 
+  // Funktion in Scala: Objekt mit .apply-Methode
   def deck: Seq[Card] = genCartesianProduct(Card.apply, Suit.all, Rank.all)
 
 }
