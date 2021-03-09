@@ -153,6 +153,23 @@ object Contract {
 Gruppe:
 Mathematik:
 - Menge M
+- binäre Operation op, assoziativ: op(a, op(b, c)) ~~ op(op(a, b), c)
+- ^^^ Halbgruppe / semigroup
+- neutrales Element n bezüglich op: op(n, x) ~~ x ~~ op(x, n)
+- ^^^ Monoid
+- zu jedem Element n ein inverses Element n^-1: op(x, x^-1) = n
+- ^^^ Gruppe
 
+Programmierung:
+statt Menge M gibt es einen Typ M
 */
+
+  // 1. Versuch
+  trait Semigroup[M] {
+    def op(other: M): M
+  }
+  
+  trait Monoid[M] extends Semigroup[M] {
+    def n: M
+  }
 }
