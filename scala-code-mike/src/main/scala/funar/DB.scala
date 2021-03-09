@@ -1,5 +1,7 @@
 package funar
 
+import scala.annotation.tailrec
+
 /*
 put("Mike", 15)
 x = get("Mike")
@@ -81,6 +83,7 @@ object DB {
       y <- get("Mike")
     } yield y
 
+  @tailrec
   def runDB[A](db: DB[A], map: Map[Key, Value]): A =
     db match {
       case Get(key, callback) =>
