@@ -20,5 +20,6 @@ object DB {
 
   trait DB
   case class Get(key: String, callback: Int => DB) extends DB
-  case class Put(key: String, value: Int, callback: Unit => DB) DB
+  case class Put(key: String, value: Int, callback: Unit => DB) extends DB
+  
 }
