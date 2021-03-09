@@ -39,7 +39,7 @@ object DB {
   case class Put[A](key: Key, value: Value, callback: Unit => DB[A]) extends DB[A]
   case class Return[A](result: A) extends DB[A]
 
-  val p1 =
+  val p1: DB[Int] =
     Put("Mike", 15, (_) =>
     Get("Mike", x =>
     Put("Mike", x + 1, (_) =>
