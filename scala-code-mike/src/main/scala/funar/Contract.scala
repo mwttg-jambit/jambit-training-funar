@@ -191,5 +191,9 @@ statt Menge M gibt es einen Typ M
     def op(a: Int, b: Int): Int = a * b
   }
 
+  implicit val contractSemigroup = new Semigroup[Contract] {
+    def op(a: Contract, b: Contract): Contract = both(a, b)
+  }
+
   def op[M](a: M, b: M)(implicit semigroup: Semigroup[M]): M = semigroup.op(a, b)
 }
