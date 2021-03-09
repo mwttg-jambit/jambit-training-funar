@@ -197,4 +197,8 @@ statt Menge M gibt es einen Typ M
   }
 
   def op[M](a: M, b: M)(implicit semigroup: Semigroup[M]): M = semigroup.op(a, b)
+
+  trait Monoid[M] extends Semigroup[M] {
+    def n: M
+  }
 }
