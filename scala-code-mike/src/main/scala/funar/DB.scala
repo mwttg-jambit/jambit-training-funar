@@ -26,7 +26,7 @@ object DB {
   val p1 =
     Put("Mike", 15, () =>
     Get("Mike", x =>
-    Put("Mike", x + 1, (()) =>
+    Put("Mike", x + 1, () =>
     Get("Mike", y =>
     Return(y)))))
 
