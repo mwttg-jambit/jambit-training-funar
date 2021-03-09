@@ -182,8 +182,14 @@ statt Menge M gibt es einen Typ M
   }
   
   val additiveSemigroup2 = new AdditiveSemigroup()
-  
+
   val additiveSemigroup = new Semigroup[Int] {
     def op(a: Int, b: Int): Int = a + b
   }
+
+  val multiplicativeSemigroup = new Semigroup[Int] {
+    def op(a: Int, b: Int): Int = a * b
+  }
+
+  def op[M](a: M, b: M)(semigroup: Semigroup[M]): M = semigroup.op(a, b)
 }
