@@ -47,4 +47,6 @@ object GameEvent {
 
 sealed trait GameCommand
 object GameCommand {
+  case class DealHands(hands: PlayerHands) extends GameCommand
+  case class PlayCard(player: Player, card: Card) extends GameCommand
 }
