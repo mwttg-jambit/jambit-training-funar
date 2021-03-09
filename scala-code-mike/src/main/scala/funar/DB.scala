@@ -44,7 +44,8 @@ object DB {
     dbA match {
       case Get(key, callback) => 
         Get(key, value => splice(callback(value), next))
-      case Put(key, value, callback) => ???
+      case Put(key, value, callback) =>
+        Put(key, value, () => splice(callback(()), next))
       case Return(result) => next(result)
     }
   
