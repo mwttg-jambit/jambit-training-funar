@@ -7,6 +7,8 @@ put("Mike", x + 1)
 y = get("Mike")
 return y
 */
-object {
+object DB {
+  trait DBCommand
+  case class Put(key: String, value: Int) extends DBCommand
   
 }
