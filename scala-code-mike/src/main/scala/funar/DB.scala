@@ -28,5 +28,6 @@ object DB {
     Get("Mike", x =>
     Put("Mike", x + 1, (()) =>
     Get("Mike", y =>
+    Return(y)))))
 
 }
