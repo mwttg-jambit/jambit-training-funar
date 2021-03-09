@@ -1,5 +1,9 @@
 package funar.hearts
 
+/* Event-Sourcing
+
+
+*/
 sealed trait GameEvent
 object GameEvent {
 }
