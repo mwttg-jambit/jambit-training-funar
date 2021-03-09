@@ -23,8 +23,8 @@ object DB {
 
   // "Datenbank-Programm mit Resultat vom Typ A"
   trait DB[A] {
-    def flatMapx[B](next: A => DB[B]): DB[B] = splice(this)(next)
-    def     map[B](   f: A =>    B): DB[B] =
+    def flatMap[B](next: A => DB[B]): DB[B] = splice(this)(next)
+    def     mapx[B](   f: A =>    B): DB[B] =
       this match {
         case Get(key, callback) =>
           Get(key, value => callback(value).map(f))
