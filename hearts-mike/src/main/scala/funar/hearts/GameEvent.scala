@@ -32,6 +32,7 @@ object GameEvent {
   case class PlayerReceived3Cards(player: Player, card1: Card, card2: Card, card3: Card)
   case class GameFinished(winner: Player)
   case class TrickSuitDetermined(suit: Suit)
+  case class StartPlayerDetermined(player: Player)
 }
 
 sealed trait GameCommand
