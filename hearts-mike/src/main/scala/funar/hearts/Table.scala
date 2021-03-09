@@ -134,7 +134,7 @@ object Table {
     import GameEvent._
     command match {
       case DealHands(hands) =>
-        hands.toSeq.map(HandDealt(_, _)
+        hands.toSeq.map(HandDealt.tupled)
       case PlayCard(player, card) => ???
 
     }
