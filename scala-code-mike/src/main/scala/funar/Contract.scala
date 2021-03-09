@@ -202,8 +202,9 @@ statt Menge M gibt es einen Typ M
     def n: M
   }
 
-  object additiveMonoid extends AdditiveSemigroup with Monoid[Int] {
+  implicit object additiveMonoid extends AdditiveSemigroup with Monoid[Int] {
     def n = 0
   }
 
+  
 }
