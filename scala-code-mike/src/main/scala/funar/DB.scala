@@ -83,9 +83,11 @@ object DB {
 
   def runDB[A](db: DB[A], map: Map[Key, Value]): A =
     db match {
-      case Get(key, callback) => ???
+      case Get(key, callback) =>
+        val value = map(key)
+        runDB(callback(value))
       case Put(key, value, callback) => ???
-      case Return(result) => ???
+      case Return(result) => result
     }
   
 }
