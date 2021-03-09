@@ -99,7 +99,7 @@ object Table {
     if (tableState.hands.values.forall(_.isEmpty)) {
       val playerScores = tableState.piles.map { case (player, pile) => (player, pileScore(pile)) }
       Some(playerScores.minBy(_._2)._1)
-    } else 
+    } else
       None
 
   def takeCard(hands: PlayerHands, player: Player, card: Card): PlayerHands =
@@ -110,9 +110,26 @@ object Table {
     playerPiles + (player -> playerPile.union(Set.from(cards)))
   }
 
-  def tableProcessEvent(event: GameEvent, tableState: TableState): TableState = ???
+  def tableProcessEvent(event: GameEvent, tableState: TableState): TableState =
+    event match {
+      case GameEvent.HandDealt(player, hand) =>
+        val hands = tableState.hands + (player -> hand)
+        tableState.copy(hands = hands)
+      case GameEvent.PlayerTurnChanged(player) =>
+        tableState.copy(rotateTo(player, tableState.players))
+      case GameEvent.LegalCardPlayed(player, card) =>
+        tableState.copy(
+          trick = Trick.add(tableState.trick, player, card),
+          hands = takeCard(tableState.hands, player, card))
+      case GameEvent.IllegalCardPlayed(_, _) => tableState
+      case GameEvent.TrickTaken(player, trick) =>
+        tableState.copy(
+          trick = List.empty,
+          piles = addToPile(tableState.piles, player, trick.map(card => card._2)))
+      case GameEvent.GameEnded(won) => tableState
+    }
 
   def tableProcessCommand(command: GameCommand, tableState: TableState): Seq[GameEvent] = ???
 
 }
-      
+
