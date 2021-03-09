@@ -191,5 +191,5 @@ statt Menge M gibt es einen Typ M
     def op(a: Int, b: Int): Int = a * b
   }
 
-  def op[M](a: M, b: M)(semigroup: Semigroup[M]): M = semigroup.op(a, b)
+  def op[M](a: M, b: M)(implicit semigroup: Semigroup[M]): M = semigroup.op(a, b)
 }
