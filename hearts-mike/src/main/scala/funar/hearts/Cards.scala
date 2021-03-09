@@ -54,7 +54,7 @@ object Card {
 }
 
 object Hand {
-  val empty: Hand = Hand.empty
+  val empty: Hand = Set.empty
 }
 
 object Trick {
