@@ -43,7 +43,7 @@ object DB {
   def splice[A, B](dbA: DB[A], next: A => DB[B]): DB[B] =
     dbA match {
       case Get(key, callback) => 
-        Get(key, value => callback(value))
+        Get(key, value => splice(callback(value), next))
       case Put(key, value, callback) => ???
       case Return(result) => next(result)
     }
