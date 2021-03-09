@@ -28,7 +28,7 @@ object DB {
       this match {
         case Get(key, callback) => ???
         case Put(key, value, callback) => ???
-        case Return(result) => f(result)
+        case Return(result) => Result(f(result))
       }
   }
   case class Get[A](key: Key, callback: Value => DB[A]) extends DB[A]
