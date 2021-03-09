@@ -26,7 +26,8 @@ object DB {
     def flatMap[B](next: A => DB[B]): DB[B] = splice(this)(next)
     def     map[B](   f: A =>    B): DB[B] =
       this match {
-        case Get(key, callback) => ???
+        case Get(key, callback) =>
+          Get(key, value => callback(value).map(f))
         case Put(key, value, callback) => ???
         case Return(result) => Return(f(result))
       }
