@@ -37,5 +37,6 @@ object DB {
   def get(key: Key): DB[Value] =
     Get(key, value => Return(value))
   
-
+  def put(key: Key, value: Value): DB[Unit] =
+    Put(key, value, _ => Return(()))
 }
