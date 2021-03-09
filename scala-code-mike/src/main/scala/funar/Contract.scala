@@ -206,5 +206,11 @@ statt Menge M gibt es einen Typ M
     def n = 0
   }
 
+  def monoidFold(list: List[A])(monoid: Monoid[A]): A =
+    list match {
+      case Nil => monoid.n
+      case first::rest =>
+        monoid.op(first, monoidFold(rest))
+    }
   
 }
