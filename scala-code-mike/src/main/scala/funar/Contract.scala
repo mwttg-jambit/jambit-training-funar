@@ -219,7 +219,7 @@ statt Menge M gibt es einen Typ M
     list match {
       case Nil => monoid.n
       case first::rest =>
-        monoid.op(first, monoidFold(rest)(monoid))
+        monoid.op(first, monoidFold(rest)
     }
 
 }
