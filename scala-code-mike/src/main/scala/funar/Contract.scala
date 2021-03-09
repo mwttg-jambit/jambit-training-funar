@@ -89,6 +89,13 @@ object Contract {
 
    val contract5 = Pay(Both(zcb1, zcb4))
 
+   // smart constructor
+   def multiple(amount: Amount, contract: Contract): Contract =
+     contract match {
+       case Zero => Zero
+       case _ => Multiple(amount, contract) 
+     }
+
    sealed trait Direction {
      def invert: Direction
    }
@@ -120,7 +127,7 @@ object Contract {
           (Seq(Payment(Long, now, 1, currency)), Zero)
         case Multiple(amount, contract) =>
           val (payments, residualContract) = semantics(contract, now)
-          (payments.map(_.scale(amount)), Multiple(amount, residualContract))
+          (payments.map(_.scale(amount)), multiple(amount, residualContract))
         case Later(date, contract) =>
           if (now >= date)
             semantics(contract, now)
