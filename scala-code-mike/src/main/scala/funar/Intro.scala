@@ -163,7 +163,7 @@ object Intro {
 
   // Laziness
   // Die ersten 100 Primzahlen berechnen
-  def natsFrom(n: Int): List[Int] =
-    n :: natsFrom(n+1)
+  def natsFrom(n: Int): LazyList[Int] =
+    n #:: natsFrom(n+1)
 
 }
