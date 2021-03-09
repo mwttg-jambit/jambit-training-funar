@@ -104,7 +104,7 @@ object Contract {
       this.copy(direction = direction.invert)
 
      def scale(factor: Double): Payment =
-      Payment.copy(amount = amount * factor)
+       this.copy(amount = amount * factor)
    }
    
    // operationelle Semantik: zeitliche Entwicklung der Domänenobjekte
