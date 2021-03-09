@@ -171,7 +171,7 @@ object Intro {
 
   // Invariante: 1. Zahl von list ist eine Primzahl
   def sieve(list: LazyList[Int]): LazyList[Int] =
-    list.head #:: sieve(strikeMultiples(first.head, list))
+    list.head #:: sieve(strikeMultiples(list.head, list))
 
   def primes = sieve(natsFrom(2))
 
