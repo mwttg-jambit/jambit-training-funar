@@ -174,6 +174,7 @@ statt Menge M gibt es einen Typ M
   }
 */
   trait Semigroup[M] {
+     // muß Assoziativgesetz gelten
      def op(a: M, b: M): M
   }
 
