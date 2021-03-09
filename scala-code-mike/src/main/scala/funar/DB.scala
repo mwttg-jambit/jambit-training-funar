@@ -40,6 +40,11 @@ object DB {
   def put(key: Key, value: Value): DB[Unit] =
     Put(key, value, Return(_)) // unit => Return(unit)
 
-  def splice[A, B](dbA: DB[A], next: A => DB[B]): DB[B] = ???
+  def splice[A, B](dbA: DB[A], next: A => DB[B]): DB[B] =
+    dbA match {
+      case Get(key, callback) => ???
+      case Put(key, value, callback) => ???
+      case Return(result) => ???
+    }
   
 }
