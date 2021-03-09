@@ -35,7 +35,7 @@ object DB {
     Return(y)))))
 
   def get(key: Key): DB[Value] =
-    Get(key, Return(_))
+    Get(key, value => Return(value))
   
 
 }
