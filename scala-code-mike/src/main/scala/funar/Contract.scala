@@ -220,7 +220,7 @@ statt Menge M gibt es einen Typ M
     list match {
       case Nil => implicitly[Monoid[A]].n
       case first::rest =>
-        implicitly[Monoid[A]].op(first, monoidFold(rest)
+        implicitly[Monoid[A]].op(first, monoidFold(rest))
     }
 
 }
