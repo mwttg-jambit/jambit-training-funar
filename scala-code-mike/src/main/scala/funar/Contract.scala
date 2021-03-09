@@ -215,11 +215,12 @@ statt Menge M gibt es einen Typ M
     }
   */
 
+  // (nahezu) gleichbedeutend mit der oberen Version
   def monoidFold[A : Monoid](list: List[A]): A =
     list match {
-      case Nil => monoid.n
+      case Nil => implicitly[Monoid[A]].n
       case first::rest =>
-        monoid.op(first, monoidFold(rest)
+        implicitly[Monoid[A]].op(first, monoidFold(rest)
     }
 
 }
