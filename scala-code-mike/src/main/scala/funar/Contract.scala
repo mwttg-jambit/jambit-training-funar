@@ -146,7 +146,7 @@ object Contract {
         case Both(contract1, contract2) =>
           val (payments1, residualContract1) = semantics(contract1, now)
           val (payments2, residualContract2) = semantics(contract2, now)
-          (payments1 ++ payments2, Both(residualContract1, residualContract2))
+          (payments1 ++ payments2, both(residualContract1, residualContract2))
       }
 
 }
