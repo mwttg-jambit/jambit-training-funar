@@ -201,4 +201,8 @@ statt Menge M gibt es einen Typ M
   trait Monoid[M] extends Semigroup[M] {
     def n: M
   }
+
+  val additiveMonoid = new Monoid[Int] with AdditiveSemigroup() {
+    def n = 0
+  }
 }
