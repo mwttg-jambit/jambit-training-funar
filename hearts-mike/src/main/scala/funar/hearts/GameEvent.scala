@@ -37,6 +37,12 @@ object GameEvent {
   case class TrickSuitDetermined(suit: Suit)
   case class StartPlayerDetermined(player: Player)
 */
+  case class HandDealt(player: Player, hand: Hand) extends GameEvent
+  case class PlayerTurnChanged(player: Player) extends GameEvent
+  case class LegalCardPlayed(player: Player, card: Card) extends GameEvent
+  case class IllegalCardPlayed(player: Player, card: Card) extends GameEvent
+  case class TrickTaken(player: Player, trick: Trick) extends GameEvent
+  case class GameEnded(won: Player) extends GameEvent
 }
 
 sealed trait GameCommand
