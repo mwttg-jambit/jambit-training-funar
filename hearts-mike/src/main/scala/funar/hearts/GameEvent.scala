@@ -22,6 +22,16 @@ BITTE NICHT DIESELBEN TYPEN / OBJEKTE!
 */
 sealed trait GameEvent
 object GameEvent {
+  case class PlayerTurnChanged(player: Player)
+  case class PlayerReceivedCards(player: Player, hand: Hand)
+  case class GameStarted(players: List[Player])
+  case class PlayerPlayedCard(player: Player, card: Card)
+  case class PlayerReceivedTrick(player: Player, trick: Trick)
+  case class TrickCompleted(trick: Trick)
+  case class PlayerSent3Cards(player: Player, card1: Card, card2: Card, card3: Card)
+  case class PlayerReceived3Cards(player: Player, card1: Card, card2: Card, card3: Card)
+  case class GameFinished(winner: Player)
+  case class TrickSuitDetermined(suit: Suit)
 }
 
 sealed trait GameCommand
