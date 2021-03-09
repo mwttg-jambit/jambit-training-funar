@@ -86,7 +86,9 @@ object DB {
       case Get(key, callback) =>
         val value = map(key)
         runDB(callback(value), map)
-      case Put(key, value, callback) => ???
+      case Put(key, value, callback) =>
+        val map1 = map + (key -> value)
+        runDB(callback(()), map1)
       case Return(result) => result
     }
   
