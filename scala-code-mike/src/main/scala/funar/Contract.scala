@@ -1,5 +1,7 @@
 package funar
 
+import scala.language.implicitConversions
+
 /*
 Methode:
 1. einfache Beispiele für Domänenobjekte einholen
