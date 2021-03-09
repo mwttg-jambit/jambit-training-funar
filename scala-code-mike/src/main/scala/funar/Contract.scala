@@ -163,7 +163,7 @@ Mathematik:
 Programmierung:
 statt Menge M gibt es einen Typ M
 */
-
+/*
   // 1. Versuch
   trait Semigroup[M] {
     def op(other: M): M
@@ -171,5 +171,9 @@ statt Menge M gibt es einen Typ M
   
   trait Monoid[M] extends Semigroup[M] {
     def n: M
+  }
+*/
+  trait Semigroup[M] {
+    def op(a: M, b: M): M
   }
 }
