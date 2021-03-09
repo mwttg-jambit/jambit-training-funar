@@ -206,5 +206,4 @@ statt Menge M gibt es einen Typ M
     def n = 0
   }
 
-  val additiveMonoid = new AdditiveMonoid()
 }
