@@ -143,7 +143,7 @@ object Table {
             val trick = state1.trick
             val trickTaker = whoTakesTrick(trick)
             val event2 = TrickTaken(trickTaker, trick)
-            val state1 = tableProcessEvent(event2, state1)
+            val state2 = tableProcessEvent(event2, state1)
             val event3 = gameOver(state2) match {
                            case Some(winner) => GameEnded(winner)
                            case None => PlayerTurnChanged(trickTaker)
