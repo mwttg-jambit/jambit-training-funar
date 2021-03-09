@@ -133,7 +133,7 @@ object Table {
     import GameCommand._
     command match {
       case DealHands(hands) =>
-        hands.map.
+        hands.map.toSeq
       case PlayCard(player, card) => ???
 
     }
