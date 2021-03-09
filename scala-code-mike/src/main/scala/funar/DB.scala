@@ -48,5 +48,12 @@ object DB {
         Put(key, value, _ => splice(callback(()), next))
       case Return(result) => next(result)
     }
+
+  val p1_a =
+    splice(put("Mike", 15), (_) =>
+    splice(get("Mike"), x =>
+    splice(put("Mike", x+1, (_) =>
+    splice(get("Mike"), y =>
+    Return(y))))))
   
 }
