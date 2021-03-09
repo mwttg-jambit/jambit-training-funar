@@ -85,11 +85,20 @@ object Contract {
 
    val contract4 = Multiple(100, Zero)
 
-   sealed trait Direction
-   case object Long extends Direction
-   case object Short extends Direction
+   sealed trait Direction {
+     def invert: Direction
+   }
+   case object Long extends Direction {
+     def invert = Short
+   }
+   case object Short extends Direction {
+     def invert = Long
+   }
 
-   case class Payment(direction: Direction, date: Date, amount: Amount, currency: Currency)
+   case class Payment(direction: Direction, date: Date, amount: Amount, currency: Currency) {
+     def invert =
+      this.copy(direction = direction.invert)
+   }
    
    // operationelle Semantik: zeitliche Entwicklung der Domänenobjekte
    // (vs. denotationalle Semantik: Domänenobjekt auf mathematisches Objekt abbilden)
@@ -104,7 +113,9 @@ object Contract {
           (Seq(Payment(Long, now, 1, currency)), Zero)
         case Multiple(amount, contract) => ???
         case Later(date, contract) => ???
-        case Pay(contract) => ???
+        case Pay(contract) =>
+          val (payments, residualContract) = semantics(contract, now)
+          (payments.map(_.invert), residualContract)
         case Both(contract1, contract2) => ???
       }
 
