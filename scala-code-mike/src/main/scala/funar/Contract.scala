@@ -121,11 +121,18 @@ object Contract {
         case Multiple(amount, contract) =>
           val (payments, residualContract) = semantics(contract, now)
           (payments.map(_.scale(amount)), Multiple(amount, contract))
-        case Later(date, contract) => ???
+        case Later(date, contract) =>
+          if (date >= now)
+            semantics(contract, now)
+          else
+            (Seq.empty, Later(date, contract))
         case Pay(contract) =>
           val (payments, residualContract) = semantics(contract, now)
           (payments.map(_.invert), Pay(residualContract))
-        case Both(contract1, contract2) => ???
+        case Both(contract1, contract2) =>
+          val (payments1, residualContract1) = semantics(contract1, now)
+          val (payments2, residualContract2) = semantics(contract2, now)
+          (payments1 ++ payments2, Both(residualContract1, residualContract2))
       }
 
 }
