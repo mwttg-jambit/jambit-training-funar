@@ -38,11 +38,13 @@ object Table {
       case _ => 0
     }
 
+  // Karten, die man vom Stich aufnehmen mußte
   type Pile = Set[Card]
 
   type PlayerPiles = Map[Player, Pile]
 
-  case class TableState(players: List[Player],
+  // "Make illegal states unrepresentable."
+  case class TableState(players: List[Player], // erste Spieler der Liste ist dran
                         hands: PlayerHands,
                         piles: PlayerPiles,
                         trick: Trick)
