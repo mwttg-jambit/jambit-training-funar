@@ -149,4 +149,10 @@ object Contract {
           (payments1 ++ payments2, both(residualContract1, residualContract2))
       }
 
+/*
+Gruppe:
+Mathematik:
+- Menge M
+
+*/
 }
