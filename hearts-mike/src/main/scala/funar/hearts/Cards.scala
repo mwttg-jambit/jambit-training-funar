@@ -65,7 +65,7 @@ object Trick {
   def cards(trick: Trick): Seq[Card] = trick.map(_._2)
 
   def add(trick: Trick, player: Player, card: Card) =
-    trick :+ (player, card)
+    (player, card) :: trick
 
   def leadingCard(trick: Trick): Card =
     trick.last._2
