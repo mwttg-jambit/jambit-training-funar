@@ -202,11 +202,9 @@ statt Menge M gibt es einen Typ M
     def n: M
   }
 
-  class AdditiveMonoid() extends AdditiveSemigroup {
+  class AdditiveMonoid() extends AdditiveSemigroup with Monoid[Int] {
     def n = 0
   }
 
-  val additiveMonoid = new Monoid[Int] extends AdditiveSemigroup {
-    def n = 0
-  }
+  val additiveMonoid = new 
 }
