@@ -96,6 +96,13 @@ object Contract {
        case _ => Multiple(amount, contract) 
      }
 
+   def both(contract1: Contract, contract2: Contract): Contract =
+     (contract1, contract2) match {
+       case (Zero, _) => contract2
+       case (_, Zero) => contract1
+       case _ => Both(contract1, contract2)
+     }
+
    sealed trait Direction {
      def invert: Direction
    }
