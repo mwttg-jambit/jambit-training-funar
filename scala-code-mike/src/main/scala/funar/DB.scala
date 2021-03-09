@@ -21,6 +21,7 @@ object DB {
   type Key = String
   type Value = Int
 
+  // "Datenbank-Programm mit Resultat vom Typ A"
   trait DB[A]
   case class Get[A](key: Key, callback: Value => DB[A]) extends DB[A]
   case class Put[A](key: Key, value: Value, callback: Unit => DB[A]) extends DB[A]
@@ -32,5 +33,9 @@ object DB {
     Put("Mike", x + 1, (_) =>
     Get("Mike", y =>
     Return(y)))))
+
+  def get(key: Key): DB[Value] =
+    Get(key, Return)
+  
 
 }
