@@ -173,9 +173,9 @@ statt Menge M gibt es einen Typ M
     def n: M
   }
 */
-  trait Semigroup[M] {
-    def op(a: M, b: M): M
-  }
+   trait Semigroup[M] {
+      def op(a: M, b: M): M
+   }
 
   val additiveSemigroup[Int] = new Semigroup[Int] {
     def op(a: Int, b: Int): Int = a + b
