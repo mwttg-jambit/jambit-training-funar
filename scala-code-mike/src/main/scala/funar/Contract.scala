@@ -207,7 +207,7 @@ statt Menge M gibt es einen Typ M
   }
 
   case class MonoidPackage[M](value: M, monoid: Monoid[M]) {
-    def op(other: M): M = monoid.op(this, other)
+    def op(other: M): M = monoid.op(value, other)
   }
   /*
   def monoidFold[A](list: List[A])(implicit monoid: Monoid[A]): A =
