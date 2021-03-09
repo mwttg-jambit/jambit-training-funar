@@ -150,7 +150,7 @@ object Table {
                          }
             Seq(event1, event2, event3)
           } else {
-             val event2 = PlayerTurnChanged(playerAfteer(state1, player))
+             val event2 = PlayerTurnChanged(playerAfter(state1, player))
              Seq(event1, event2)
           }
         } else 
