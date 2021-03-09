@@ -21,7 +21,7 @@ object DB {
   trait DB[A]
   case class Get[A](key: String, callback: Int => DB[A]) extends DB[A]
   case class Put[A](key: String, value: Int, callback: Unit => DB[A]) extends DB[A]
-  case class Return[A](result: A) extrends DB[A]
+  case class Return[A](result: A) extends DB[A]
 
   val p1 =
     Put("Mike", 15, () =>
