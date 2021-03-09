@@ -166,4 +166,7 @@ object Intro {
   def natsFrom(n: Int): LazyList[Int] =
     n #:: natsFrom(n+1)
 
+  def strikeMultiples(n: Int, list: LazyList[Int]): LazyList[Int] =
+    list.filter(_ % n != 0)
+
 }
