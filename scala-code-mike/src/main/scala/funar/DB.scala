@@ -24,7 +24,7 @@ object DB {
   case class Return(result: A)
 
   val p1 =
-    Put("Mike", 15, (()) =>
+    Put("Mike", 15, () =>
     Get("Mike", x =>
     Put("Mike", x + 1, (()) =>
     Get("Mike", y =>
