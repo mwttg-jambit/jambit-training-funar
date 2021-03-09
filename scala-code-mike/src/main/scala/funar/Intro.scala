@@ -159,4 +159,11 @@ object Intro {
   // einerseits Interface für Folgen-Datentypen
   // andererseits effiziziente Datenstruktur auf Basis von Hash-Tries 
   val highway2 = Seq(d1, d2, parrot1, parrot2)
+
+
+  // Laziness
+  // Die ersten 100 Primzahlen berechnen
+  def natsFrom(n: Int): List[Int] =
+    n :: natsFrom(n+1)
+
 }
