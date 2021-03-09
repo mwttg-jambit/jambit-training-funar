@@ -129,12 +129,14 @@ object Table {
       case GameEvent.GameEnded(player) => tableState
     }
 
-  def tableProcessCommand(command: GameCommand, tableState: TableState): Seq[GameEvent] =
+  def tableProcessCommand(command: GameCommand, tableState: TableState): Seq[GameEvent] = {
+    import GameCommand._
     command match {
       case DealHands(hands) => ???
       case PlayCard(player, card) => ???
 
     }
+  }
 
 }
       
