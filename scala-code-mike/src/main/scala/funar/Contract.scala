@@ -183,7 +183,7 @@ statt Menge M gibt es einen Typ M
   
   val additiveSemigroup2 = new AdditiveSemigroup()
 
-  val additiveSemigroup = new Semigroup[Int] {
+  implicit val additiveSemigroup = new Semigroup[Int] {
     def op(a: Int, b: Int): Int = a + b
   }
 
