@@ -24,6 +24,12 @@ object DB {
   // "Datenbank-Programm mit Resultat vom Typ A"
   trait DB[A] {
     def flatMap[B](next: A => DB[B]): DB[B] = splice(this)(next)
+    def     map[B](   f: A =>    B): DB[B] =
+      this match {
+        case Get(key, callback) => ???
+        case Put(key, value, callback) => ???
+        case Return(result) => f(result)
+      }
   }
   case class Get[A](key: Key, callback: Value => DB[A]) extends DB[A]
   case class Put[A](key: Key, value: Value, callback: Unit => DB[A]) extends DB[A]
