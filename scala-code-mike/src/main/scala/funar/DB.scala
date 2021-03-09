@@ -50,6 +50,10 @@ object DB {
   def put(key: Key, value: Value): DB[Unit] =
     Put(key, value, Return(_)) // unit => Return(unit)
 
+  // splice(dbA, Return) ~~ dbA
+  // splice(Return(x), next) ~~ next(x)
+  // splice(splice(dBA, nextB), nextC) ~~~
+  //   splice(dbA, a => splice(nextB(a), nextC))
   def splice[A, B](dbA: DB[A])(next: A => DB[B]): DB[B] =
     dbA match {
       case Get(key, callback) => 
@@ -58,6 +62,8 @@ object DB {
         Put(key, value, _ => splice(callback(()))(next))
       case Return(result) => next(result)
     }
+
+  // DB + flatMap / splice + Return = Monade
 
   val p1_a =
     splice(put("Mike", 15))((_) =>
