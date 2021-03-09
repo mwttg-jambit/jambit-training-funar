@@ -85,7 +85,7 @@ object DB {
     db match {
       case Get(key, callback) =>
         val value = map(key)
-        runDB(callback(value))
+        runDB(callback(value), map)
       case Put(key, value, callback) => ???
       case Return(result) => result
     }
