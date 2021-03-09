@@ -169,4 +169,10 @@ object Intro {
   def strikeMultiples(n: Int, list: LazyList[Int]): LazyList[Int] =
     list.filter(_ % n != 0)
 
+  // Invariante: 1. Zahl von list ist eine Primzahl
+  def sieve(list: LazyList[Int]): LazyList[Int] =
+    list.head #:: sieve(strikeMultiples(first.head, list))
+
+  def primes = sieve(natsFrom(2))
+
 }
