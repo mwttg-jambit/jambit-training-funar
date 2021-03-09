@@ -38,7 +38,10 @@ object Currency {
   case object GBP extends Currency
 }
 
-case class Date(desc: String)
+case class Date(desc: String) extends Ordered[Date] {
+  def compare(that: Date): Int =
+    this.desc.compare(that.desc)
+}
 
 sealed trait Contract
 /*
