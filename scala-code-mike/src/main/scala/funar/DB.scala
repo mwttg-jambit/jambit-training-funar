@@ -40,20 +40,20 @@ object DB {
   def put(key: Key, value: Value): DB[Unit] =
     Put(key, value, Return(_)) // unit => Return(unit)
 
-  def splice[A, B](dbA: DB[A], next: A => DB[B]): DB[B] =
+  def splice[A, B](dbA: DB[A])(next: A => DB[B]): DB[B] =
     dbA match {
       case Get(key, callback) => 
-        Get(key, value => splice(callback(value), next))
+        Get(key, value => splice(callback(value))(next))
       case Put(key, value, callback) =>
-        Put(key, value, _ => splice(callback(()), next))
+        Put(key, value, _ => splice(callback(()))(next))
       case Return(result) => next(result)
     }
 
   val p1_a =
-    splice(put("Mike", 15), (_) =>
-    splice(get("Mike"), x =>
-    splice(put("Mike", x+1, (_) =>
-    splice(get("Mike"), y =>
-    Return(y))))))
+    splice(put("Mike", 15))((_) =>
+    splice(get("Mike"))(x =>
+    splice(put("Mike", x+1)((_) =>
+    splice(get("Mike")(y =>
+    Return(y)))))))
   
 }
