@@ -206,7 +206,7 @@ statt Menge M gibt es einen Typ M
     def n = 0
   }
 
-  def monoidFold[A](list: List[A])(monoid: Monoid[A]): A =
+  def monoidFold[A](list: List[A])(implicit monoid: Monoid[A]): A =
     list match {
       case Nil => monoid.n
       case first::rest =>
