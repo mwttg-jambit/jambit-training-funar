@@ -63,6 +63,7 @@ object DB {
       case Return(result) => next(result)
     }
 
+  // DB ist ein Typ*konstruktor*
   // DB + flatMap / splice + Return = Monade
 
   val p1_a =
@@ -79,5 +80,12 @@ object DB {
       _ <- put("Mike", x+1)
       y <- get("Mike")
     } yield y
+
+  def runDB[A](db: DB[A], map: Map[Key, Value]): A =
+    db match {
+      case Get(key, callback) => ???
+      case Put(key, value, callback) => ???
+      case Return(result) => ???
+    }
   
 }
