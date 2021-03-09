@@ -12,6 +12,7 @@ Logbuch über alles, was passiert ist in der Organisation: Events
 - alles, was passiert IST: Vergangenheit
 - fachlich motiviert
 - darf redundant sein
+- Events können sehr lange leben
 
 Gibt häufig auch noch Commands:
 - Wunsch, daß etwas in der Zukunft passieren soll
