@@ -38,7 +38,7 @@ object DB {
     Get(key, value => Return(value))
   
   def put(key: Key, value: Value): DB[Unit] =
-    Put(key, value, _ => Return(()))
+    Put(key, value, Return(_)) // unit => Return(unit)
 
 
   
