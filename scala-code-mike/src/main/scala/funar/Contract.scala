@@ -187,7 +187,7 @@ statt Menge M gibt es einen Typ M
     def op(a: Int, b: Int): Int = a + b
   }
 
-  val multiplicativeSemigroup = new Semigroup[Int] {
+  implicit val multiplicativeSemigroup = new Semigroup[Int] {
     def op(a: Int, b: Int): Int = a * b
   }
 
