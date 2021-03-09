@@ -120,7 +120,7 @@ object Contract {
           (Seq(Payment(Long, now, 1, currency)), Zero)
         case Multiple(amount, contract) =>
           val (payments, residualContract) = semantics(contract, now)
-          (payments.map(_.scale(amount)), Multiple(amount, contract))
+          (payments.map(_.scale(amount)), Multiple(amount, residualContract))
         case Later(date, contract) =>
           if (now >= date)
             semantics(contract, now)
