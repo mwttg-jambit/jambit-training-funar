@@ -10,5 +10,5 @@ return y
 object DB {
   trait DBCommand
   case class Put(key: String, value: Int) extends DBCommand
-  case class Get(key) extends DBCommand
+  case class Get(key: String) extends DBCommand
 }
