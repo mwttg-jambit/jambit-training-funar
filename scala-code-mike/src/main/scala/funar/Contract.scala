@@ -77,13 +77,17 @@ object Contract {
 
    val zcb3 = zeroCouponBond(100, Currency.GBP, Date("2001-01-29"))
 
-   // Pay(Pay(c)) ~~~ c
+   val zcb4 = Later(Date("2002-02-01"), Multiple(100, One(Currency.GBP)))
+
+      // Pay(Pay(c)) ~~~ c
    val contract3 = Pay(Later(Date("2002-02-01"), Multiple(100, One(Currency.GBP))))
 
    // D1 aus dem Paper
    val d1 = Both(zcb1, contract3)
 
    val contract4 = Multiple(100, Zero)
+
+   val contract5 = Pay(Both(zcb1, zcb4))
 
    sealed trait Direction {
      def invert: Direction
@@ -98,6 +102,9 @@ object Contract {
    case class Payment(direction: Direction, date: Date, amount: Amount, currency: Currency) {
      def invert =
       this.copy(direction = direction.invert)
+
+     def scale(factor: Double): Payment =
+      Payment.copy(amount = amount * factor)
    }
    
    // operationelle Semantik: zeitliche Entwicklung der Domänenobjekte
@@ -111,11 +118,13 @@ object Contract {
         case Zero => (Seq.empty, Zero)
         case One(currency) =>
           (Seq(Payment(Long, now, 1, currency)), Zero)
-        case Multiple(amount, contract) => ???
+        case Multiple(amount, contract) =>
+          val (payments, residualContract) = semantics(contract, now)
+          (payments.scale(amount), Multiple(amount, contract))
         case Later(date, contract) => ???
         case Pay(contract) =>
           val (payments, residualContract) = semantics(contract, now)
-          (payments.map(_.invert), residualContract)
+          (payments.map(_.invert), Pay(residualContract))
         case Both(contract1, contract2) => ???
       }
 
