@@ -18,15 +18,18 @@ object DB {
   val p1 = List(Put("Mike", 15), Get("Mike"))
   */
 
+  type Key = String
+  type Value = Int
+
   trait DB[A]
-  case class Get[A](key: String, callback: Int => DB[A]) extends DB[A]
-  case class Put[A](key: String, value: Int, callback: Unit => DB[A]) extends DB[A]
+  case class Get[A](key: Key, callback: Value => DB[A]) extends DB[A]
+  case class Put[A](key: Key, value: Value, callback: Unit => DB[A]) extends DB[A]
   case class Return[A](result: A) extends DB[A]
 
   val p1 =
     Put("Mike", 15, (_) =>
     Get("Mike", x =>
-    Put("Mike", x + 1, () =>
+    Put("Mike", x + 1, (_) =>
     Get("Mike", y =>
     Return(y)))))
 
