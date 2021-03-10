@@ -51,6 +51,7 @@ object Monads {
 
   }
 
+  // Either[Error, *]: 1stelliger Typkonstruktor A => Either[Error, A]
   def eitherMonad[Error] = new Monad[Either[Error, *]] {
     def pure[A](a: A): Either[Error, A] = Right(a)
 
