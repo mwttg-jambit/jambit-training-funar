@@ -74,8 +74,8 @@ object Monads {
   } yield (d1 + d2 + d2)
 
   case class Reader[Env, A](process: Env => A) {
-    def map[A, B](f: A => B): Reader[Env, B] = readerFunctor[Env].map(this)(f)
-    def flatMap[A, B](f: A => Reader[Env, B]): Reader[Env, B] =
+    def map[B](f: A => B): Reader[Env, B] = readerFunctor[Env].map(this)(f)
+    def flatMap[B](f: A => Reader[Env, B]): Reader[Env, B] =
       readerMonad[Env].flatMap(this)(f)
   }
 
