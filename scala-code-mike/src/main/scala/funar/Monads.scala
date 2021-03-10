@@ -92,4 +92,10 @@ object Monads {
       join(Reader(env => f(reader.process(env))))
   }
 
+  for {
+    x = 1 + 2
+    dbHandle <- get[Int]
+    
+  } yield
+
 }
