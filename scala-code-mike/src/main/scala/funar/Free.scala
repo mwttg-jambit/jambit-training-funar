@@ -19,7 +19,7 @@ object Free {
   case class Pure[F[_], A](result: A) extends Free[F, A] // Return1 / Return
   case class Impure[F[_], A](f: F[Free[F, A]]) extends Free[F, A]
 
-  implicit def freeMonad[F[_]]: Monad[Free[F, *]] = new Monad[Free[F, *]] {
+  implicit def freeMonad[F[_]](implicit fFunctor: Functor[F]): Monad[Free[F, *]] = new Monad[Free[F, *]] {
     def pure[A](value: A) = Pure[F, A](value)
 
     def flatMap[A, B](fa: Free[F, A])(next: A => Free[F, B]): Free[F, B] =
