@@ -66,18 +66,32 @@ object Decode {
   }
 
   implicit val decoderFunctor: Functor[Decoder] = new Functor[Decoder] {
-    def map[A, B](decoder: Decoder[A])(f: A => B): Decoder[B] = ???
+    def map[A, B](decoder: Decoder[A])(f: A => B): Decoder[B] = { Json =>
+      decoder(Json).map(f)
+    }
   }
 
   implicit val decoderApplicative: Applicative[Decoder] = new Applicative[Decoder] {
-    def pure[A](value: A) = ???
-    def ap[A, B](ff : Decoder[A=>B])(fa: Decoder[A]): Decoder[B] = ???
+    def pure[A](value: A) = succeed(value)
+    def ap[A, B](ff : Decoder[A=>B])(fa: Decoder[A]): Decoder[B] = { Json =>
+      fa(Json) match {
+        case Right(fav) =>
+          ff(Json) match {
+            case Right(ffv) =>
+              Right(ffv(fav))
+            case Left(error) => Left(error)
+          }
+        case Left(error) => Left(error)
+      }
+    }
 
   }
 
   implicit val decoderMonad: Monad[Decoder] = new Monad[Decoder] {
-    def flatMap[A, B](decoder: Decoder[A])(f: A => Decoder[B]): Decoder[B] = ???
-    def pure[A](value: A) = ???
+    def flatMap[A, B](decoder: Decoder[A])(f: A => Decoder[B]): Decoder[B] = { Json =>
+      decoder(Json).flatMap { valueA => f(valueA)(Json) }
+    }
+    def pure[A](value: A) = succeed(value)
 
     def tailRecM[A, B](a: A)(f: A => Decoder[Either[A, B]]): Decoder[B] = { Json =>
       @tailrec def loop(a: A): Either[Error, B] =
@@ -103,7 +117,6 @@ object Decode {
 
   def optional[A](decoder: Decoder[A]): Decoder[Option[A]] =
     oneOf(decoder.map(Some(_)), succeed(None))
-
 
   def field[A](name: String, decoder: Decoder[A]): Decoder[A] = { json =>
     json.asObject match {
