@@ -31,7 +31,7 @@ object Monads {
     def pure[A](a: A): List[A] = List(a)
 
     def flatMap[A, B](list: List[A])(f: A => List[B]): List[B] =
-      list.map(f)
+      list.map(f).flatten
   }
 
 }
