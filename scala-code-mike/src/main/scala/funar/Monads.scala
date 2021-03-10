@@ -49,4 +49,14 @@ object Monads {
 
   }
 
+  def eitherMonad[Error] = new Monad[Either[Error, *]] {
+    def pure[A](a: A): Either[Error, A] = Right(a)
+
+    def flatMap(e: Either[Error, A])(f: A => Either[Error, B]): Either[Error, B] =
+      e match {
+        case Left(error) => Left(error)
+        case Right(a) => f(a)
+      }
+  }
+
 }
