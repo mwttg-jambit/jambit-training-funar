@@ -24,7 +24,8 @@ object Free {
 
     def flatMap[A, B](fa: Free[F, A])(next: A => Free[F, B]): Free[F, B] = ???
 
-    
+    def tailRecM[A, B](a: A)(next: A => Free[F, Either[A, B]]): Free[F, B] = ???
+
   }
 
   sealed trait ReaderF[Env, SelfReference]
