@@ -22,5 +22,8 @@ object Free {
   sealed trait ReaderF[Env, SelfReference]
   case class Get[Env, SelfReference](callback: Env => SelfReference) extends ReaderF[Env, SelfReference]
 
+  type IntReaderF[SelfReference] = ReaderF[Int, SelfReference]
+  type IntReader[A] = Free[IntReader, A] 
+
   type Reader[Env, A] = Free[ReaderF[Env, *], A]
 }
