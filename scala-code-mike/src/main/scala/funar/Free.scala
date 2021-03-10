@@ -19,6 +19,10 @@ object Free {
   case class Pure[F[_], A](result: A) extends Free[F, A] // Return1 / Return
   case class Impure[F[_], A](f: F[Free[F, A]]) extends Free[F, A]
 
+  def freeMonad[F[_]]: Monad[Free[F, *]] = new Monad[Free[F, *]] {
+    def pure[A](value: A) = Pure[F, A](value)
+  }
+
   sealed trait ReaderF[Env, SelfReference]
   case class Ask[Env, SelfReference](callback: Env => SelfReference) extends ReaderF[Env, SelfReference]
 
