@@ -59,4 +59,23 @@ object Monads {
       }
   }
 
+  def safeDivide(a: Int, b: Int): Either[String, Int] =
+    if (b == 0)
+      Left("divided by zero")
+    else
+      Right(a / b)
+
+  for {
+    d1 <- safeDivide(10, 3)
+    d2 <- safeDivide(10, 0)
+    d3 <- safeDivide(5, 2)
+  } yield (d1 + d2 + d2)
+
+  case class Reader[Env, A](f: Env => A)
+
+  def readerFunctor[Env] = new Functor[Reader[Env, *]] {
+    def map[A, B](reader: Reader[Env, A])(f: A => B): Reader[Env, B] =
+      Reader()
+  }
+
 }
