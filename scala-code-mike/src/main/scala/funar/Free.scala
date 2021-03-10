@@ -26,4 +26,9 @@ object Free {
   type IntReader[A] = Free[IntReaderF, A] 
 
   type Reader[Env, A] = Free[ReaderF[Env, *], A]
+
+  sealed trait DB[SelfReference]
+  case class Get[SelfReference](key: Key, callback: Value => SelfReference) extends DB[SelfReference]
+  case class Put[SelfReference](key: Key, value: Value, callback: Unit => SelfReference) extends DB[SelfReference]
+
 }
