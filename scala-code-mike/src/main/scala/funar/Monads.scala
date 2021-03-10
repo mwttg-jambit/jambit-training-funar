@@ -12,10 +12,17 @@ object Monads {
   // dazwischen: Applicative Functors
   //             Selective Functors
 
-  // geht nur für Typen mit Typparameter
+  // geht nur für Typen mit 1 Typparameter
   trait Monad[M[_]] { // higher-kinded type
     def pure[A](result: A): M[A]
     def flatMap[A, B](m: M[A])(f: A => M[B]): M[B]
   }
 
+  // einstellige Typkonstruktoren
+  // Option[_]
+  // List[_]
+
+  def listFunctor = new Functor[List] {
+    
+  } 
 }
