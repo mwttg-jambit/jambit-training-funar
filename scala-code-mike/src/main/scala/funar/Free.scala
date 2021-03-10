@@ -27,7 +27,7 @@ object Free {
 
   type Reader[Env, A] = Free[ReaderF[Env, *], A]
 
-  def ask[Env]: Reader[Env, Env] = Ask(Pure(_))
+  def ask[Env]: Reader[Env, Env] = Impure(Ask(Pure(_)))
 
   type Key = String
   type Value = Int
