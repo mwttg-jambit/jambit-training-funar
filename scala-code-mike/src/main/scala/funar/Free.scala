@@ -21,6 +21,8 @@ object Free {
 
   def freeMonad[F[_]]: Monad[Free[F, *]] = new Monad[Free[F, *]] {
     def pure[A](value: A) = Pure[F, A](value)
+
+    def flatMap[A, B](fa: Free[F, A])(next: A => Free[F, B]): Free[F, B] = ???
   }
 
   sealed trait ReaderF[Env, SelfReference]
