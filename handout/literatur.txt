@@ -1,0 +1,8 @@
+Chiusano, Bjarnasson: Functional Programming in Scala
+https://www.manning.com/books/functional-programming-in-scala
+
+Sandy Maguire: Algebra-Driven Design
+https://algebradriven.design/
+
+Typinferenz in Scala:
+https://discuss.daml.com/t/scala-inference-rules-of-thumb/2242
