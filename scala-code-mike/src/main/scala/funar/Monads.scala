@@ -1,6 +1,9 @@
 package funar
 
 object Monads {
-  trait Monad
+  // geht nur für Typen mit Typparameter
+  trait Monad[M] {
+    def
+  }
 
 }
