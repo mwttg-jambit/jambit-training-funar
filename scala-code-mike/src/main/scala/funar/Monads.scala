@@ -41,6 +41,11 @@ object Monads {
   // häufig: Either[Error, Result]
   
   def eitherFunctor[Error] = new Monad[Either[Error, *]] {
+    def map[A, B](e: Either[Error, A])(f: A => B): Either[Error, B] =
+      e match {
+        case Left(error) => ???
+        case Right(a) => ???
+      }
 
   }
 
