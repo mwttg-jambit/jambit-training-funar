@@ -20,5 +20,7 @@ object Free {
   case class Impure[F[_], A](f: F[Free[F, A]]) extends Free[F, A]
 
   sealed trait ReaderF[Env, SelfReference]
-  case class Get[Env, SelfReference](callback: Env => SelfReference) extends ReaderF[Env, Knot]
+  case class Get[Env, SelfReference](callback: Env => SelfReference) extends ReaderF[Env, SelfReference]
+
+  type Reader[Env, A] = Free[ReaderF[Env, *], A]
 }
