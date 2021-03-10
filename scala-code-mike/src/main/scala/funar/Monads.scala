@@ -27,5 +27,4 @@ object Monads {
       x.map(f)
   } 
 
-  List(1,2,3).flatMap
 }
