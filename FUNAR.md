@@ -47,5 +47,9 @@ hier:
 
 https://guide.elm-lang.org/install/
 
+Hearts-UI starten:
 
-
+```
+cd hearts-frontend
+elm reactor
+```
