@@ -16,7 +16,7 @@ object Free {
   // F ist nachher zuständig für die konkreten Operationen
   // F ist entweder DB', Reader'[Env, *]
   sealed trait Free[F[_], A]
-  case class SelfReference[F[_], A](result: A) extends Free[F, A] // Return1 / Return
+  case class Pure[F[_], A](result: A) extends Free[F, A] // Return1 / Return
   case class Impure[F[_], A](f: F[Free[F, A]]) extends Free[F, A]
 
   sealed trait ReaderF[Env, SelfReference]
