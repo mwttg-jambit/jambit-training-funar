@@ -1,2 +1,5 @@
 package funar
 
+object Monads {
+  
+}
