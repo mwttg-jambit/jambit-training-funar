@@ -3,7 +3,7 @@ package funar
 object Monads {
 
   trait Functor[F[_]] {
-    def map(f: F[])
+    def map(x: F[A])(f: A => B): F[B]
   }
 
   // geht nur für Typen mit Typparameter
