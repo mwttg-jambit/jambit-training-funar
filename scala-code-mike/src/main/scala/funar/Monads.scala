@@ -16,6 +16,8 @@ object Monads {
   trait Monad[M[_]] { // higher-kinded type
     def pure[A](result: A): M[A]
     def flatMap[A, B](m: M[A])(f: A => M[B]): M[B]
+
+    def join[A](mm: M[M[A]]): M[A] = flatMap(mm)(x => x)
   }
 
   // einstellige Typkonstruktoren
@@ -77,6 +79,8 @@ object Monads {
     def map[A, B](reader: Reader[Env, A])(f: A => B): Reader[Env, B] =
       Reader(env => f(reader.process(env)))
   }
+
+
 
   def readerMonad[Env] = new Monad[Reader[Env, *]] {
     def pure[A](a: A): Reader[Env, A] = Reader(_ => a)
