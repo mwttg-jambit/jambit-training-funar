@@ -23,6 +23,7 @@ object Monads {
   // List[_]
 
   def listFunctor = new Functor[List] {
-    
+    def map[A, B](x: List[A])(f: A => B): List[B] =
+      x.map(f)
   } 
 }
