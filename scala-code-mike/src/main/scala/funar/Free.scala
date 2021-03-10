@@ -13,5 +13,9 @@ object Free {
 
   def get1[Env] : Reader1[Env, Env] = Get1(Return1(_))
 
+  // F ist nachher zuständig für die konkreten Operationen
+  sealed trait Free[F[_], A]
+  case class Pure[F[_], A](result: A) extends Free[F, A]
+
 
 }
