@@ -40,8 +40,8 @@ object Monads {
   // Right(b: B) extends Either[A, B]
   // häufig: Either[Error, Result]
   
-  def eitherFunctor[Error] = new Monad[Either] {
-    
+  def eitherFunctor[Error] = new Monad[Either[Error, *]] {
+
   }
 
 }
