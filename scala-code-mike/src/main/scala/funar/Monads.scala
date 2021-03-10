@@ -35,4 +35,9 @@ object Monads {
       list.map(f).flatten
   }
 
+  // Either[A, B]
+  // Left(a: A) extends Either[A, B]
+  // Right(b: B) extends Either[A, B]
+  
+
 }
