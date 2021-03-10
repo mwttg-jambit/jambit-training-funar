@@ -75,15 +75,12 @@ object Monads {
 
   case class Reader[Env, A](process: Env => A)
 
-  def 
+  def get[Env]: Reader[Env, Env] = Reader(x => x)
 
   def readerFunctor[Env] = new Functor[Reader[Env, *]] {
     def map[A, B](reader: Reader[Env, A])(f: A => B): Reader[Env, B] =
       Reader(env => f(reader.process(env)))
-  }
-
- 
-  def get[Env]: Reader[Env, Env] = Reader(x => x)
+  } 
 
   def readerMonad[Env] = new Monad[Reader[Env, *]] {
     def pure[A](a: A): Reader[Env, A] = Reader(_ => a)
