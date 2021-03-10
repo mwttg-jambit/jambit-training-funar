@@ -26,4 +26,6 @@ object Monads {
     def map[A, B](x: List[A])(f: A => B): List[B] =
       x.map(f)
   } 
+
+  List(1,2,3).flatMap
 }
