@@ -71,11 +71,11 @@ object Monads {
     d3 <- safeDivide(5, 2)
   } yield (d1 + d2 + d2)
 
-  case class Reader[Env, A](f: Env => A)
+  case class Reader[Env, A](process: Env => A)
 
   def readerFunctor[Env] = new Functor[Reader[Env, *]] {
     def map[A, B](reader: Reader[Env, A])(f: A => B): Reader[Env, B] =
-      Reader()
+      Reader(env => f(reader.process(env)))
   }
 
 }
