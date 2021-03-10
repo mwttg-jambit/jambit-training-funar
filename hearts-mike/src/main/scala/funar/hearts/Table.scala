@@ -38,11 +38,13 @@ object Table {
       case _ => 0
     }
 
+  // Karten, die man vom Stich aufnehmen mußte
   type Pile = Set[Card]
 
   type PlayerPiles = Map[Player, Pile]
 
-  case class TableState(players: List[Player],
+  // "Make illegal states unrepresentable."
+  case class TableState(players: List[Player], // erste Spieler der Liste ist dran
                         hands: PlayerHands,
                         piles: PlayerPiles,
                         trick: Trick)
@@ -110,9 +112,51 @@ object Table {
     playerPiles + (player -> playerPile.union(Set.from(cards)))
   }
 
-  def tableProcessEvent(event: GameEvent, tableState: TableState): TableState = ???
+  def tableProcessEvent(event: GameEvent, tableState: TableState): TableState =
+    event match {
+      case HandDealt(player, hand) => 
+        tableState.copy(hands = tableState.hands + (player -> hand),
+                        trick = Trick.empty)
+      case PlayerTurnChanged(player) =>
+        tableState.copy(players = rotateTo(player, tableState.players))
+      case GameEvent.LegalCardPlayed(player, card) =>
+        tableState.copy(hands = takeCard(tableState.hands, player, card),
+                        trick = Trick.add(tableState.trick, player, card))
+      case GameEvent.IllegalCardPlayed(player, card) => tableState
+      case GameEvent.TrickTaken(player, trick) =>
+        tableState.copy(piles = addToPile(tableState.piles, player, Trick.cards(trick)),
+                        trick = Trick.empty)
+      case GameEvent.GameEnded(player) => tableState
+    }
 
-  def tableProcessCommand(command: GameCommand, tableState: TableState): Seq[GameEvent] = ???
+  def tableProcessCommand(command: GameCommand, tableState: TableState): Seq[GameEvent] = {
+    import GameCommand._
+    import GameEvent._
+    command match {
+      case DealHands(hands) =>
+        hands.toSeq.map(HandDealt.tupled)
+      case PlayCard(player, card) =>
+        if (playValid(tableState, player, card)) {
+          val event1 = LegalCardPlayed(player, card)
+          val state1 = tableProcessEvent(event1, tableState)
+          if (turnOver(state1)) {
+            val trick = state1.trick
+            val trickTaker = whoTakesTrick(trick)
+            val event2 = TrickTaken(trickTaker, trick)
+            val state2 = tableProcessEvent(event2, state1)
+            val event3 = gameOver(state2) match {
+                           case Some(winner) => GameEnded(winner)
+                           case None => PlayerTurnChanged(trickTaker)
+                         }
+            Seq(event1, event2, event3)
+          } else {
+             val event2 = PlayerTurnChanged(playerAfter(state1, player))
+             Seq(event1, event2)
+          }
+        } else 
+          Seq(IllegalCardPlayed(player, card))
+    }
+  }
 
 }
       

@@ -10,7 +10,7 @@ Methode:
 4. nach Selbstreferenzen suchen
 5. ggf. mit weiteren Beispiel wiederholen
 6. nach binärem Operator suchen
-7. wenn 6 erfolgreich: neutrales Element
+7. wenn 6 erfolgreich: neutrales Element => Monoid
 */
 
 /*
