@@ -75,6 +75,8 @@ object Monads {
 
   case class Reader[Env, A](process: Env => A)
 
+  def 
+
   def readerFunctor[Env] = new Functor[Reader[Env, *]] {
     def map[A, B](reader: Reader[Env, A])(f: A => B): Reader[Env, B] =
       Reader(env => f(reader.process(env)))
