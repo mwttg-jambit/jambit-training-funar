@@ -22,7 +22,11 @@ object Free {
   def freeMonad[F[_]]: Monad[Free[F, *]] = new Monad[Free[F, *]] {
     def pure[A](value: A) = Pure[F, A](value)
 
-    def flatMap[A, B](fa: Free[F, A])(next: A => Free[F, B]): Free[F, B] = ???
+    def flatMap[A, B](fa: Free[F, A])(next: A => Free[F, B]): Free[F, B] =
+      fa match {
+        case Pure(result) => next(result)
+        case Impure(f) => Impure(f.flatMap(next))
+      }
 
     def tailRecM[A, B](a: A)(next: A => Free[F, Either[A, B]]): Free[F, B] = ???
 
