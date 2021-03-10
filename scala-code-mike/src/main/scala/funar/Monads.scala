@@ -93,9 +93,8 @@ object Monads {
   }
 
   for {
-    val x = 1 + 2
     dbHandle <- get[Int]
-
+    x = 1 + 2 
   } yield x
 
 }
