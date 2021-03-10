@@ -78,4 +78,8 @@ object Monads {
       Reader(env => f(reader.process(env)))
   }
 
+  def readerMonad[Env] = new Monad[Reader[Env, *]] {
+    def pure[A](a: A): Reader[Env, A] = Reader(_ => a)
+  }
+
 }
