@@ -40,7 +40,7 @@ object Monads {
   // Right(b: B) extends Either[A, B]
   // häufig: Either[Error, Result]
   
-  def eitherFunctor[Error] = new Monad[Either[Error, *]] {
+  def eitherFunctor[Error] = new Functor[Either[Error, *]] {
     def map[A, B](e: Either[Error, A])(f: A => B): Either[Error, B] =
       e match {
         case Left(error) => ???
