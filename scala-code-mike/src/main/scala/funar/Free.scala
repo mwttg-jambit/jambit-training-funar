@@ -29,9 +29,11 @@ object Free {
 
   type Key = String
   type Value = Int
-  
-  sealed trait DB[SelfReference]
-  case class Get[SelfReference](key: Key, callback: Value => SelfReference) extends DB[SelfReference]
-  case class Put[SelfReference](key: Key, value: Value, callback: Unit => SelfReference) extends DB[SelfReference]
+
+  sealed trait DBF[SelfReference]
+  case class Get[SelfReference](key: Key, callback: Value => SelfReference) extends DBF[SelfReference]
+  case class Put[SelfReference](key: Key, value: Value, callback: Unit => SelfReference) extends DBF[SelfReference]
+
+  type DB[A] = Free[DBF, A]
 
 }
