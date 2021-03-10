@@ -23,7 +23,7 @@ object Free {
   case class Get[Env, SelfReference](callback: Env => SelfReference) extends ReaderF[Env, SelfReference]
 
   type IntReaderF[SelfReference] = ReaderF[Int, SelfReference]
-  type IntReader[A] = Free[IntReader, A] 
+  type IntReader[A] = Free[IntReaderF, A] 
 
   type Reader[Env, A] = Free[ReaderF[Env, *], A]
 }
