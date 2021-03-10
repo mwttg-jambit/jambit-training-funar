@@ -80,6 +80,8 @@ object Monads {
 
   def readerMonad[Env] = new Monad[Reader[Env, *]] {
     def pure[A](a: A): Reader[Env, A] = Reader(_ => a)
+    def flatMap(reader: Reader[Env, A])(f: A => Reader[Env, B]): Reader[Env, B] =
+      Reader(env => reader.process(env))
   }
 
 }
