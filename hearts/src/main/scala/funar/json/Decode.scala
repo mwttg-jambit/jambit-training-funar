@@ -55,7 +55,6 @@ object Decode {
           Left(Failure("not an array (index " + i + ")", json))
     }
   }
-    
 
   def oneOf[A](alternatives: Decoder[A]*): Decoder[A] = { Json =>
     val results = alternatives.toIterable.map(_(Json))
@@ -66,18 +65,18 @@ object Decode {
   }
 
   implicit val decoderFunctor: Functor[Decoder] = new Functor[Decoder] {
-    def map[A, B](decoder: Decoder[A])(f: A => B): Decoder[B] = ???
+    def map[A, B](decoder: Decoder[A])(f: A => B): Decoder[B] = json => decoder(json).map(f)
   }
 
   implicit val decoderApplicative: Applicative[Decoder] = new Applicative[Decoder] {
-    def pure[A](value: A) = ???
+    def pure[A](value: A) = json => Right(value)
     def ap[A, B](ff : Decoder[A=>B])(fa: Decoder[A]): Decoder[B] = ???
 
   }
 
   implicit val decoderMonad: Monad[Decoder] = new Monad[Decoder] {
-    def flatMap[A, B](decoder: Decoder[A])(f: A => Decoder[B]): Decoder[B] = ???
-    def pure[A](value: A) = ???
+    def flatMap[A, B](decoder: Decoder[A])(f: A => Decoder[B]): Decoder[B] = json => decoder(json).flatMap(a => f(a)(json))
+    def pure[A](value: A) = json => Right(value)
 
     def tailRecM[A, B](a: A)(f: A => Decoder[Either[A, B]]): Decoder[B] = { Json =>
       @tailrec def loop(a: A): Either[Error, B] =
@@ -112,7 +111,7 @@ object Decode {
           case None => Left(Failure("field " + name + " not found", json))
           case Some(entry) => decoder(entry).swap.map(Field(name, _)).swap
         }
-      case _ => Left(Failure("not an object", json))       
+      case _ => Left(Failure("not an object", json))
     }
   }
 
